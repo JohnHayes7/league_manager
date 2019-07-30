@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_153848) do
+ActiveRecord::Schema.define(version: 2019_07_30_154853) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2019_07_30_153848) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "referees", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "password_digest"
+    t.boolean "admin", default: false
+    t.boolean "coach", default: false
+    t.boolean "referee", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
