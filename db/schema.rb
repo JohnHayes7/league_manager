@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_151444) do
+ActiveRecord::Schema.define(version: 2019_07_30_153848) do
+
+  create_table "competitions", force: :cascade do |t|
+    t.string "name"
+    t.integer "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "seasons", force: :cascade do |t|
     t.string "year"
