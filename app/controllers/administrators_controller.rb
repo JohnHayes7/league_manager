@@ -1,18 +1,19 @@
 class AdministratorsController < ApplicationController
 
-    def show
-        @admin = Administrator.where(:id => params[:id])
-        
-    end
-
+    
     def create
-       admin = Administrator.new(admin_params)
-       if admin.save
+       @admin = Administrator.new(admin_params)
+       if @admin.save
 
-          redirect_to administrator_path(admin)
+          redirect_to administrator_path(@admin)
        else
           render :new
        end
+    end
+
+    def show
+        @admin = Administrator.where(:id => params[:id])
+        
     end
 
     def new
