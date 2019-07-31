@@ -1,4 +1,13 @@
-<h1>Hello <%= @admin.name %></h1>
+<h1>Hello,  <%= @admin.first_name %></h1>
 <p> 
     <h3>What Would you like to do? </h3>
-        
+        <ul>
+            <li><%= link_to "Create A New Season?", new_season_path %></li>
+            <li>create a new competition?</li>
+            <li>create a new team?</li>
+            <li>create a new player?</li>
+            <li>create a new coach?</li>
+            <li>create a new referee?</li>
+            <li>create a new location?</li>
+            <li>create a new administrator?</li>
+        </ul>  
