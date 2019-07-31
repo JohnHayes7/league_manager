@@ -12,7 +12,7 @@ class AdministratorsController < ApplicationController
     end
 
     def show
-        @admin = Administrator.where(:id => params[:id])
+        @admin = Administrator.find_by(:id => params[:id])
         
     end
 
