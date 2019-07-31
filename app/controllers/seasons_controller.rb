@@ -5,7 +5,15 @@ class SeasonsController < ApplicationController
     end
 
     def create
-        @season = Season.find_or_create_by(:id => params[:id])
+        
+        @season = Season.new(season_params)
         binding.pry
+    end
+
+
+    private
+
+    def season_params
+        params.require(:season).permit(:year)
     end
 end
