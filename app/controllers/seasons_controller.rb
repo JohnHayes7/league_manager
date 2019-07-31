@@ -6,16 +6,15 @@ class SeasonsController < ApplicationController
     end
 
     def create
-        # raise params.inspect
+        
         @season = Season.new(season_params)
         if @season.save
-
             redirect_to season_path(@season)
         end
-        
     end
 
     def show
+        @season = Season.find_by(:id => params[:id])
 
     end
 

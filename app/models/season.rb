@@ -2,4 +2,10 @@ class Season < ApplicationRecord
     has_many :competitions
     has_many :teams
     has_many :matches, through: :competitions
+
+    def competitions_attributes=(comp_attrs)
+            comp = Competition.find_or_create_by(name: comp_attrs[:"0"][:name])
+            self.competitions << comp
+        
+    end
 end
