@@ -5,7 +5,13 @@ class AdministratorsController < ApplicationController
     end
 
     def create
+       admin = Administrator.new(admin_params)
+       if admin.save
 
+          redirect_to administrator_path(admin)
+       else
+          render :new
+       end
     end
 
     def new
