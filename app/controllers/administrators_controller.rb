@@ -1,7 +1,8 @@
 class AdministratorsController < ApplicationController
 
     def show
-
+        @admin = Administrator.where(:id => params[:id])
+        
     end
 
     def create
