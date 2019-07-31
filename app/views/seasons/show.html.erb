@@ -1,1 +1,6 @@
 <h1>The <%= @season.year %> Season</h1>
+<ul>
+    <% @season.competitions.each do |c| %>
+        <li><%= c.name %></li>
+    <% end %>
+</ul>
