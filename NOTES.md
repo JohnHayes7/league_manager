@@ -11,3 +11,15 @@ Team belong to a division
         <% end %>
     </ul>
 <% end %>
+
+/team/matches = schedule
+Only show one teams matches
+
+ADMIN OPTIONS
+@admin.options = ["Administrator", "Coach", "Season", "Competition", "Player", "Referee", "Team", "Location", "Matches"]
+
+<%= form_for (@admin) do |f| %>
+    <%= f.label "Would You like to create a new...>
+    <%= f.collection_select @admin.options, :blank => true %>
+    <%= f.submit %>
+<% end %>

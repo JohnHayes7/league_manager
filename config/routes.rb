@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: "static#welcome"
   resources :teams, only:[:index]
   resources :administrators, only:[:show, :new, :create]
-  resources :seasons, only:[:new]
-  # get "/admin" => "administrator#admin"
+  resources :seasons, only:[:new, :create]
+  
 end
