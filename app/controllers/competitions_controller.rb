@@ -6,10 +6,7 @@ class CompetitionsController < ApplicationController
     end
 
     def show 
-        if params[:season_id]
-            comps = Season.find(params[:season_id]).competitions 
-            @comp = comps.find(params[:id]) 
-        end
+        @comp = Competition.find(params[:id])
     end
 
     private
