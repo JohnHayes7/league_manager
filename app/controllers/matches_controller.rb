@@ -6,7 +6,16 @@ class MatchesController < ApplicationController
     end
 
     def create
-        raise params.inspect
+        match = Match.new(match_params)
+        if match.save
+            redirect_to match_path(match)
+        end
+    end
+
+    private
+
+    def match_params
+        params.require(:match).permit(:date, :location_id, :location_notes, location:[:name, :street_address, :city, :state, :zipcode])
     end
 
 end
