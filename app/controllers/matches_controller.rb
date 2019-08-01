@@ -5,4 +5,8 @@ class MatchesController < ApplicationController
         @match = @comp.matches.build
     end
 
+    def create
+        raise params.inspect
+    end
+
 end
