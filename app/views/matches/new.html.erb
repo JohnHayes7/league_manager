@@ -1,6 +1,7 @@
 <h1>Create A New Match </h1>
 
-<%= form_for(@match, :url=>competition_matches_path(@comp)) do |f| %>
+<%= form_for(@match, competition_matches_path(@match.competition_id)) do |f| %>
+   
     <%= f.label "Match Date:" %>
     <%= f.text_field :date, :placeholder => "mm/dd/yy" %><br>
     <%= f.label "Location" %>

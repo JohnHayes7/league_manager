@@ -3,6 +3,7 @@ class MatchesController < ApplicationController
     def new
         @comp = Competition.find(params[:competition_id])
         @match = @comp.matches.build
+        
     end
 
     def create
@@ -11,12 +12,13 @@ class MatchesController < ApplicationController
     
             redirect_to match_path(match)
         end
+        render :new
     end
 
     private
 
     def match_params
-        params.require(:match).permit(:date, :location_id, :location_notes, location:[:name, :street_address, :city, :state, :zipcode])
+        params.require(:match).permit(:date, :location_notes, location:[:name, :street_address, :city, :state, :zipcode])
     end
 
 end
