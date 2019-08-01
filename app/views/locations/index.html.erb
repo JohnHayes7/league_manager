@@ -1,0 +1,8 @@
+<h1>Here your available locations: </h1>
+    <% @locations.each do |l| %>
+        <div>
+            <strong><%= l.name %></strong><br>
+            <%= l.street_address %><br>
+            <%= l.city %>, <%= l.state %> <%=l.zip_code %>
+        </div>
+    <% end %>  
