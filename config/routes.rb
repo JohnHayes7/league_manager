@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :matches, only:[:new, :create]
   end
 
+  resources :matches, only:[:show]
+
   resources :locations, only:[:new, :index, :create]
 
 end

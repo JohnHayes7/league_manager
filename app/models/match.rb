@@ -8,8 +8,9 @@ class Match < ApplicationRecord
     has_many :coaches, through: :teams
 
     def location=(location_attrs)
-        if !location_attrs[:name].blank? && location_attrs[:street_address].blank?
-            l = Location.find_or_create_by(:name => location_attrs[:name], :street_address => :location_attrs[:street_address], :city => :location_attrs[:city], :state => :location_attrs[:state], :zip_code => :location_attrs[:zip_code])     
+        
+        if !location_attrs[:name].blank? && !location_attrs[:street_address].blank?
+            l = Location.find_or_create_by(:name => location_attrs[:name], :street_address => location_attrs[:street_address], :city => location_attrs[:city], :state => location_attrs[:state], :zip_code => location_attrs[:zip_code])     
             self.location_id = l.id
         end
     end

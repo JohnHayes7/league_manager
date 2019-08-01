@@ -8,6 +8,7 @@ class MatchesController < ApplicationController
     def create
         match = Match.new(match_params)
         if match.save
+    
             redirect_to match_path(match)
         end
     end
