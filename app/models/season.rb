@@ -4,8 +4,10 @@ class Season < ApplicationRecord
     has_many :matches, through: :competitions
 
     def competitions_attributes=(comp_attrs)
+        if !comp_attrs[:name].blank?
             comp = Competition.find_or_create_by(name: comp_attrs[:"0"][:name])
             self.competitions << comp
+        end
         
     end
 

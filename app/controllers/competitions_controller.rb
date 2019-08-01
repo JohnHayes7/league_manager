@@ -1,8 +1,10 @@
 class CompetitionsController < ApplicationController
+    
 
     def create
-        @comp = Competition.create(comp_params)
-
+        if name.valid?
+            @comp = Competition.create(comp_params)
+        end
     end
 
     def show 
