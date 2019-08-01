@@ -9,6 +9,15 @@ class CompetitionsController < ApplicationController
         @comp = Competition.find(params[:id])
     end
 
+    def new
+        @comp = Competition.new
+        @comp.matches.build
+    end
+
+    def patch
+        raise params.inspect
+    end
+
     private
 
     def comp_params
