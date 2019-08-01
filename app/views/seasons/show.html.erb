@@ -1,6 +1,6 @@
 <h1>The <%= @season.year %> Season</h1>
 <ul>
     <% @season.competitions.each do |c| %>
-        <li><%= c.name %></li>
+        <li><%= link_to c.name, season_competition_path(c) %></li>
     <% end %>
 </ul>
