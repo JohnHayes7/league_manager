@@ -23,3 +23,5 @@ ADMIN OPTIONS
     <%= f.collection_select @admin.options, :blank => true %>
     <%= f.submit %>
 <% end %>
+
+*****NEED A CURRENT SEASON METHOD******

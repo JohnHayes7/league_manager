@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "static#welcome"
   resources :teams, only:[:index]
   resources :administrators, only:[:show, :new, :create]
-  resources :seasons, only:[:new, :create, :show]
+  
+  resources :seasons, only:[:new, :create, :show, :index] do 
+    resources :competition, only:[:show]
+  end
   
 end
