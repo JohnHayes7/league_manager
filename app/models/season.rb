@@ -8,4 +8,13 @@ class Season < ApplicationRecord
             self.competitions << comp
         
     end
+
+    def competition_ids=(ids)
+        ids.each do |id|
+            if id != ""
+                comp = Competition.find(id)
+                self.competitions << comp
+            end
+        end
+    end
 end

@@ -6,7 +6,7 @@ class SeasonsController < ApplicationController
     end
 
     def create
-        
+
         @season = Season.new(season_params)
         if @season.save
             redirect_to season_path(@season)
@@ -22,6 +22,6 @@ class SeasonsController < ApplicationController
     private
 
     def season_params
-        params.require(:season).permit(:year, competitions_attributes:[:name])
+        params.require(:season).permit(:year, competition_ids:[], competitions_attributes:[:name])
     end
 end
