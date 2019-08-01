@@ -6,7 +6,11 @@ class CompetitionsController < ApplicationController
     end
 
     def show 
-
+        raise params.inspect
+        if params[:season_id]
+            @comps = Season.find(:id => params[:season_id]).competitions
+           
+        end
     end
 
     private
