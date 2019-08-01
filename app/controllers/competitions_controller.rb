@@ -5,6 +5,10 @@ class CompetitionsController < ApplicationController
 
     end
 
+    def show 
+
+    end
+
     private
 
     def comp_params
