@@ -1,18 +1,23 @@
 class MatchesController < ApplicationController
 
-    def new
-        @comp = Competition.find(params[:competition_id])
-        @match = @comp.matches.build
+    # def new
+    #     @comp = Competition.find(params[:competition_id])
+    #     @match = @comp.matches.build
         
-    end
+    # end
 
-    def create
-        match = Match.new(match_params)
-        if match.save
+    # def create
+    #     match = Match.new(match_params)
+    #     binding.pry
+    #     if match.save
     
-            redirect_to match_path(match)
-        end
-        render :new
+    #         redirect_to controller_match_path(match)
+    #     end
+    #     render :new
+    # end
+
+    def show 
+
     end
 
     private

@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   end
   
   resources :competitions, only:[:show, :index, :edit] do
-    resources :matches, only:[:new, :create]
+    resources :matches, only:[:new, :create, :show]
   end
 
-  resources :matches, only:[:show]
+  
 
   resources :locations, only:[:new, :index, :create]
 
