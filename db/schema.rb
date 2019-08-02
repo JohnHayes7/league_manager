@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_02_032230) do
+ActiveRecord::Schema.define(version: 2019_08_02_153738) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "name"
@@ -61,13 +61,14 @@ ActiveRecord::Schema.define(version: 2019_08_02_032230) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.string "date"
     t.text "location_notes"
     t.integer "location_id"
     t.integer "competition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "referee_id", default: 1
+    t.date "date"
+    t.time "time"
   end
 
   create_table "players", force: :cascade do |t|
