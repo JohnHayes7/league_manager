@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_190410) do
+ActiveRecord::Schema.define(version: 2019_08_02_032230) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "name"
@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 2019_08_01_190410) do
     t.text "location_notes"
     t.integer "location_id"
     t.integer "competition_id"
-    t.integer "referee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "referee_id", default: 1
   end
 
   create_table "players", force: :cascade do |t|

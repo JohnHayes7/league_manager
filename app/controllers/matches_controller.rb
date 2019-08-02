@@ -6,15 +6,13 @@ class MatchesController < ApplicationController
         
     end
 
-    # def create
-    #     match = Match.new(match_params)
-    #     binding.pry
-    #     if match.save
-    
-    #         redirect_to controller_match_path(match)
-    #     end
-    #     render :new
-    # end
+    def create
+       @match = Match.new(match_params)
+       @match.competition_id = params[:competition_id]
+       if @match.save
+            redirect_to competition_path(@match.competition_id)
+       end
+    end
 
     def show 
 
@@ -23,7 +21,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:date, :location_notes, location:[:name, :street_address, :city, :state, :zipcode])
+        params.require(:match).permit(:date, :location_id, :competition_id, :referee_id, :location_notes, location:[:name, :street_address, :city, :state, :zipcode])
     end
 
 end
