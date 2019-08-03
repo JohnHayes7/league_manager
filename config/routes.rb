@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :matches, only:[:new, :create, :show]
   end
 
-  
+  resources :teams, only:[:new]  
 
   resources :locations, only:[:new, :index, :create]
 
