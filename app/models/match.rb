@@ -15,5 +15,10 @@ class Match < ApplicationRecord
         end
     end
 
+    def display_date
+        binding.pry
+
+    end
+
     
 end
