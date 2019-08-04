@@ -14,11 +14,14 @@ class Match < ApplicationRecord
             self.location_id = l.id
         end
     end
-
-    def display_date
+    
+    def teams_attributes=(team_attrs)
         binding.pry
-
+        if !team_attrs[:"0"][:name].blank?
+            comp = Competition.find_or_create_by(name: comp_attrs[:"0"][:name])
+            self.competitions << comp
+        end
+        
     end
-
     
 end

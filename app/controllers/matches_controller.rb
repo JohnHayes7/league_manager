@@ -21,7 +21,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:date, :time, :location_id, :competition_id, :referee_id, :location_notes, location:[:name, :street_address, :city, :state, :zipcode])
+        params.require(:match).permit(:date, :time, :location_id, :competition_id, :referee_id, :location_notes, location:[:name, :street_address, :city, :state, :zipcode], team_ids:[], teams_attributes:[:name])
     end
 
 end
