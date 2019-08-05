@@ -10,6 +10,7 @@ class MatchesController < ApplicationController
        @match = Match.new(match_params)
        @match.competition_id = params[:competition_id]
        if @match.save
+        
             redirect_to competition_path(@match.competition_id)
        else
             # Need to add error Message
@@ -22,7 +23,7 @@ class MatchesController < ApplicationController
     end
 
     def edit
-        
+      
     end
 
     private
