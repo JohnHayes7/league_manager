@@ -21,6 +21,10 @@ class MatchesController < ApplicationController
 
     end
 
+    def edit
+        
+    end
+
     private
 
     def match_params

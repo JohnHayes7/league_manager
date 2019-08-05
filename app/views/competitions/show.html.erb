@@ -1,12 +1,12 @@
 <h1>The <%=@comp.season.year %> - <%= @comp.name %> </h1>
 <br>
-    <% if @comp.matches.empty? %>
-        <h3><%= link_to "Create A New Schedule/Matches", new_competition_match_path(@comp) %></h3>
-    <% else %>
-        
-        <% @comp.matches.each do |c| %>
-            <div id="match-display"><%= c.date %>  <%= c.time %> -  <br>
-                <%= c.teams[0].name %> vs. <%= c.teams[1].name %><br>
-                <%= c.location.name %> - <%= c.location_notes %></div><br>
-        <% end %>
+    
+    <h3><%= link_to "Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
+    <% @comp.matches.each do |c| %>
+        <div id="match-display">
+            <%= c.date %>  <%= c.time %>  <br>
+            <%= c.teams[0].name %> vs. <%= c.teams[1].name %><br>
+            <%= c.location.name %> <%= c.location_notes %><br><br>
+            <%= link_to "Edit This Match", edit_competition_match_path(@comp) %>
+        </div><br>
     <% end %>
