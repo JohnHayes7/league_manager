@@ -5,7 +5,12 @@
     <%= @location.zip_code %>
 </div>
 
-<h3>Here are the matches from this location:</h3>
-<%= @location.matches.each do |m| %>
-    
+<h3>These Matches took place at this location:</h3>
+
+<% @location.matches.each do |m| %>
+    <div id="match-display">
+    <h4> <%=m.teams[0].name %> vs <%= m.teams[1].name %></h4>
+    <%= m.competition.name %>
+    <%= m.date %> <%= m.time %>
+    </div>
 <% end %>
