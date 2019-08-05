@@ -8,8 +8,8 @@ class CompetitionsController < ApplicationController
     end
 
     def show 
-        raise params.inspect
         @comp = Competition.find(params[:id])
+        
     end
 
     def new

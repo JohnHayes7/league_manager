@@ -25,6 +25,7 @@ class Match < ApplicationRecord
     # end
 
     def teams_in_match
+        binding.pry
         "#{self.teams[0].name} vs  #{self.teams[1].name}"
     end
 

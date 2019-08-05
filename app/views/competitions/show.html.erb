@@ -5,7 +5,7 @@
     <% @comp.matches.each do |c| %>
         <div id="match-display">
             <%= c.date %>  <%= c.time %>  <br>
-            <%= c.teams_in_match %><br>
+            <%= c.teams[0].name %> vs. <%= c.teams[1].name %><br>
             <%= link_to c.location.name, location_path(c.location) %> <%= c.location_notes %><br><br>
             <%= link_to "Edit This Match", edit_competition_match_path(c.competition_id, c) %>
         </div><br>
