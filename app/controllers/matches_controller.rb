@@ -29,6 +29,7 @@ class MatchesController < ApplicationController
 
     def update
         @match = Match.find(params[:id])
+        binding.pry
         @match.update(match_params)
         if @match.save
             redirect_to competition_path(@match.competition_id)

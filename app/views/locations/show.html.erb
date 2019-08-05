@@ -1,1 +1,11 @@
-<h1><%= @location.name %></h1>
+<div id="location-show-info">
+    <strong><%= @location.name %></strong><br>
+    <%= @location.street_address %><br>
+    <%= @location.city %>, <%= @location.state %><br>
+    <%= @location.zip_code %>
+</div>
+
+<h3>Here are the matches from this location:</h3>
+<%= @location.matches.each do |m| %>
+    
+<% end %>
