@@ -27,5 +27,7 @@ class Match < ApplicationRecord
     def teams_in_match
         "#{self.teams[0].name} vs  #{self.teams[1].name}"
     end
+
+
     
 end

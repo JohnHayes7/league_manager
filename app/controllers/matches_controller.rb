@@ -7,16 +7,20 @@ class MatchesController < ApplicationController
     end
 
     def create
-       @match = Match.new(match_params)
-       
-       @match.competition_id = params[:competition_id]
-       if @match.save
-        
-            redirect_to competition_path(@match.competition_id)
-       else
-            # Need to add error Message
-            render :new
-       end
+       if params[:match][:team_ids].count == 3 
+            @match = Match.new(match_params)
+            @match.competition_id = params[:competition_id]
+                if @match.save
+                    
+                        redirect_to competition_path(@match.competition_id)
+                else
+                        # Need to add error Message
+                        render :new
+                end
+        else
+            flash[:error] = "Be sure two teams are selected to create a match"
+            redirect_to new_competition_match_path
+        end
     end
 
     def show 
@@ -29,7 +33,6 @@ class MatchesController < ApplicationController
 
     def update
         @match = Match.find(params[:id])
-        binding.pry
         @match.update(match_params)
         if @match.save
             redirect_to competition_path(@match.competition_id)
