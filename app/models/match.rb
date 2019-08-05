@@ -16,8 +16,13 @@ class Match < ApplicationRecord
     end
 
     def team_ids=(ids)
-
+        binding.pry
+        ids.each do |id|
+            if id != ""
+                team = Team.find(id)
+                self.teams << team
+            end
+        end
     end
-    
     
 end

@@ -8,7 +8,6 @@ class Season < ApplicationRecord
         if !comp_attrs[:"0"][:name].blank?
             comp = Competition.find_or_create_by(name: comp_attrs[:"0"][:name])
             self.competitions << comp
-            binding.pry
         end
         
     end
