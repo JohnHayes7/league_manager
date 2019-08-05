@@ -3,7 +3,7 @@ class Match < ApplicationRecord
     belongs_to :referee
     belongs_to :location
     has_many :match_notes
-    has_many :teams
+    has_and_belongs_to_many :teams
     has_many :players, through: :teams
     has_many :coaches, through: :teams
 
@@ -14,14 +14,10 @@ class Match < ApplicationRecord
             self.location_id = l.id
         end
     end
-    
-    def teams_attributes=(team_attrs)
-        binding.pry
-        if !team_attrs[:"0"][:name].blank?
-            comp = Competition.find_or_create_by(name: comp_attrs[:"0"][:name])
-            self.competitions << comp
-        end
-        
+
+    def team_ids=(ids)
+
     end
+    
     
 end
