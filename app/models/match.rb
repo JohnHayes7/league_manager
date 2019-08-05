@@ -15,14 +15,14 @@ class Match < ApplicationRecord
         end
     end
 
-    def team_ids=(ids)
-        ids.each do |id|
-            if id != ""
-                team = Team.find(id)
-                self.teams << team
-            end
-        end
-    end
+    # def team_ids=(ids)
+    #     ids.each do |id|
+    #         if id != ""
+    #             team = Team.find(id)
+    #             self.teams << team
+    #         end
+    #     end
+    # end
 
     def teams_in_match
         "#{self.teams[0].name} vs  #{self.teams[1].name}"

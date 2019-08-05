@@ -7,11 +7,13 @@ class MatchesController < ApplicationController
     end
 
     def create
+       
        if params[:match][:team_ids].count == 3 
             @match = Match.new(match_params)
             @match.competition_id = params[:competition_id]
+            
                 if @match.save
-                    
+                    binding.pry
                         redirect_to competition_path(@match.competition_id)
                 else
                         # Need to add error Message

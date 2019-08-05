@@ -3,7 +3,6 @@
     
     <h3><%= link_to "Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
     <% @comp.matches.each do |c| %>
-        <% binding.pry %>
         <div id="match-display">
             <%= c.date %>  <%= c.time %>  <br>
             <%= c.teams_in_match %><br>
