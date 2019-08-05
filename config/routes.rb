@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   resources :teams, only:[:new, :create, :index]  
 
-  resources :locations, only:[:new, :index, :create]
+  resources :locations, only:[:new, :index, :create, :show]
 
 end
