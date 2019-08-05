@@ -1,1 +1,32 @@
 <h1>Edit Match </h1>
+
+<%= form_for @match, url: {action: 'update'}  do |f| %>
+    <%= f.label "Match Date:" %>
+    <%= f.date_field :date%><br>
+    <%= f.label "Match Time:" %>
+    <%= f.time_field :time %><br>
+    <%= f.label "Add Teams" %><br>
+    <%= f.collection_check_boxes(:team_ids, Team.all, :id, :name) %><br>
+    <%= f.label "Location" %>
+    <%= f.collection_select(:location_id, Location.all, :id, :name, :include_blank => true) %><br>
+        <div style="margin-left: 40px">
+        <strong> or create a new location:</strong><br>
+            <%= f.fields_for :location do |location| %>
+                <%= location.label :name %>
+                <%= location.text_field :name %><br>
+                <%= location.label :street_address %>
+                <%= location.text_field :street_address %><br>
+                <%= location.label :city %>
+                <%= location.text_field :city %><br>
+                <%= location.label :state %>
+                <%= location.text_field :state %><br>
+                <%= location.label :zip_code %>
+                <%= location.text_field :zip_code %>
+            <% end %>
+        </div><br>
+    <%= f.label "Location Notes:" %><br>
+    <%= f.text_area :location_notes, :size => "75 x 10",  :placeholder => "Description of field identification or location if applicable" %><br>
+    <%= f.submit %>
+
+
+<% end %>

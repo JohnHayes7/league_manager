@@ -24,7 +24,17 @@ class MatchesController < ApplicationController
     end
 
     def edit
-      raise params.inspect
+        @match = Match.find(params[:id])
+    end
+
+    def update
+        @match = Match.find(params[:id])
+        @match.update(match_params)
+        if @match.save
+            redirect_to competition_path(@match.competition_id)
+        else
+            render :edit
+        end
     end
 
     private
