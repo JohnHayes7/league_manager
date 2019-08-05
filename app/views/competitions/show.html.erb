@@ -5,7 +5,8 @@
     <% else %>
         
         <% @comp.matches.each do |c| %>
-            <div id="match-display"><%= c.date %>  <%= c.time %> - <%= c.location.name %> <br>
-                <%= c.location_notes %></div><br>
+            <div id="match-display"><%= c.date %>  <%= c.time %> -  <br>
+                <%= c.teams[0].name %> vs. <%= c.teams[1].name %><br>
+                <%= c.location.name %> - <%= c.location_notes %></div><br>
         <% end %>
     <% end %>

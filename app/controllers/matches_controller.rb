@@ -11,6 +11,9 @@ class MatchesController < ApplicationController
        @match.competition_id = params[:competition_id]
        if @match.save
             redirect_to competition_path(@match.competition_id)
+       else
+            # Need to add error Message
+            render :new
        end
     end
 
