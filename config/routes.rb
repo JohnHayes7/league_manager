@@ -27,4 +27,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :match_notes, only:[:new, :create, :edit, :destroy]
+
 end
