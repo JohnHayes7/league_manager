@@ -9,3 +9,10 @@
         <%= m.location.name %>
     <% end %>
 <% end %>
+
+<h3>Here are a list of matches yet to be assigned:</h3>
+    <% @matches.each do |m| %>
+        <%= m.date %> <%= m.competition.name %>
+        <%= m.time %><br>
+        <%= m.location.name %><br>
+    <% end %>
