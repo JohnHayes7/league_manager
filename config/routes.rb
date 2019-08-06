@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   resources :locations, only:[:new, :index, :create, :show]
 
+  resources :referees
+
 end

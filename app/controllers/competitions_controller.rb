@@ -13,13 +13,14 @@ class CompetitionsController < ApplicationController
     end
 
     def new
+        raise params.inspect
         @comp = Competition.new
         @comp.matches.build
     end
 
-    def patch
-        raise params.inspect
-    end
+    # def patch
+    #     raise params.inspect
+    # end
 
     private
 
