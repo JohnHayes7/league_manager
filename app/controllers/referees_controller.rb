@@ -20,10 +20,6 @@ class RefereesController < ApplicationController
         @matches = Match.where(:referee_id == 1)
     end
 
-    def assign
-        raise params.inspect
-
-    end
 
 
 

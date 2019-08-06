@@ -6,7 +6,9 @@
     <h3> Here are your games: </h3>
     <% @ref.matches.each do |m| %>
         <%= m.date %> <%= m.time %><br>
-        <%= m.location.name %>
+        <%= m.location.name %><br><br>
+
+        <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %>
     <% end %>
 <% end %>
 
@@ -16,6 +18,6 @@
             <%= m.date %> <%= m.competition.name %>
             <%= m.time %><br>
             <%= m.location.name %><br><br>
-            <%= link_to "Assign this match to referee", assign_referee_path(@ref, m), method: :post %>
+            <%= link_to "Assign this match to referee", assign_referee_match_path(@ref, m), method: :post %>
         </div><br>
     <% end %>

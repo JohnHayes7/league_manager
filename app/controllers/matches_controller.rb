@@ -43,6 +43,23 @@ class MatchesController < ApplicationController
         end
     end
 
+    def assign
+       @match = Match.find(params[:id])
+       @match.referee_id = params[:referee_id]
+       @match.save
+
+       redirect_to referee_path(@match.referee_id)
+    end
+
+    def unassign
+        @match = Match.find(params[:id])
+        @ref = Referee.find(params[:referee_id])
+        @match.referee_id = 1
+        @match.save
+
+        redirect_to referee_path(@ref)
+    end
+
     private
 
     def match_params
