@@ -1,0 +1,5 @@
+<h2>Create a new Competition</h2>
+<% form_for(@comp) do |f| %>
+    <strong>Select a Season for your new competition %></strong>
+    <%= f.collection_select(:season_id, Season.all, :id, :year) %>
+<% end %>

@@ -1,6 +1,7 @@
 <div id="match-show-info">
     <h2><%= @match.teams[0].name %> vs <%= @match.teams[1].name %></h2>
     <p>
+        <%= @match.competition.name %><br>
         <%= @match.date %> <%= @match.time %><br>
         <%= @match.location.name %><br>
         <%= @match.location.street_address %><br>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :matches, only:[:new, :create, :show, :edit, :update]
   end
 
+  resources :competitions, only:[:new]
+
   resources :teams, only:[:new, :create, :index]  
 
   resources :locations, only:[:new, :index, :create, :show]
