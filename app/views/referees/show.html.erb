@@ -5,18 +5,21 @@
 <% else %>
     <h3> Here are your games: </h3>
     <% @ref.matches.each do |m| %>
-        <%= m.date %> <%= m.time %><br>
-        <%= m.location.name %><br><br>
+        <div id="match-display">
+            <%= m.competition.name %><br>
+            <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %><br>
+            <%= m.location.name %><br><br>
 
-        <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %>
+            <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %><br><br>
+        </div><br>
     <% end %>
 <% end %>
 
 <h3>Here are a list of matches yet to be assigned:</h3>
     <% @matches.each do |m| %>
         <div id="match-display">
-            <%= m.date %> <%= m.competition.name %>
-            <%= m.time %><br>
+            <%= m.competition.name %><br>
+            <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %><br>
             <%= m.location.name %><br><br>
             <%= link_to "Assign this match to referee", assign_referee_match_path(@ref, m), method: :post %>
         </div><br>

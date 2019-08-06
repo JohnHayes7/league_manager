@@ -17,7 +17,8 @@ class RefereesController < ApplicationController
 
     def show
         @ref = Referee.find(params[:id])
-        @matches = Match.where(:referee_id == 1)
+        @matches = Match.where("referee_id = 1")
+        
     end
 
 
