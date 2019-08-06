@@ -33,3 +33,11 @@ body{
      width: 25%; 
      padding: 2%;
  }
+
+ #match-show-info{
+     border: 1px black solid;
+     width: 66%;
+     padding-left: 3%;
+     margin-left: 15%;
+     text-align: center;
+ }

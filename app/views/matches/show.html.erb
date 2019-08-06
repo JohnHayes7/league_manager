@@ -1,1 +1,25 @@
-<h1> Match Show Page </h1>
+<div id="match-show-info">
+    <h2><%= @match.teams[0].name %> vs <%= @match.teams[1].name %></h2>
+    <p>
+        <%= @match.date %> <%= @match.time %><br>
+        <%= @match.location.name %><br>
+        <%= @match.location.street_address %><br>
+        <%= @match.location.city %><br>
+        <%= @match.location.state %>
+        <%= @match.location.zip_code %>
+    </p>
+
+    <p>
+        <strong>Referee:</strong>
+        <%= @match.referee.name %><br>
+        <strong>Match Notes: </strong>
+        <% if @match.referee.match_notes.empty? %>
+            <strong>The Referee will add match notes. <br> Please contact league administrator if you have any questions</strong>
+        <% else %>
+            <% @match.referee.match_notes.each do |note| %>
+                <%= note.content %>
+            <% end %>
+        <% end %>
+    </p>
+
+</div>
