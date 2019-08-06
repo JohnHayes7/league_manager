@@ -9,7 +9,7 @@
             <%= m.competition.name %><br>
             <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %><br>
             <%= m.location.name %><br><br>
-
+            <%= link_to "Add Match Notes", new_referee_match_note_path(@ref) %><br>
             <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %><br><br>
         </div><br>
     <% end %>

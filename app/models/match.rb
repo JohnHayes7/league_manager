@@ -15,5 +15,9 @@ class Match < ApplicationRecord
         end
     end
 
+    def date_and_time
+        "#{self.date} #{self.time}"
+    end
+
     
 end
