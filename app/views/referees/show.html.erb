@@ -1,0 +1,11 @@
+<h1>Welcome <%=@ref.first_name %></h1>
+
+<% if @ref.matches.empty? %>
+    <h3>You have not been assigned or officiated any games yet</h3>
+<% else %>
+    <h3> Here are your games: </h3>
+    <% @ref.matches.each do |m| %>
+        <%= m.date %> <%= m.time %><br>
+        <%= m.location.name %>
+    <% end %>
+<% end %>
