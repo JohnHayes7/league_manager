@@ -4,9 +4,11 @@
     <%= f.label "Match Date:" %>
     <%= f.date_field :date%><br>
     <%= f.label "Match Time:" %>
-    <%= f.time_field :time %><br>
+    <%= f.time_field :time %><br><br>
     <%= f.label "Add Teams" %><br>
-    <%= f.collection_check_boxes(:team_ids, Team.all, :id, :name) %><br>
+    <%= f.collection_check_boxes(:team_ids, Team.all, :id, :name) %><br><br>
+    <%= f.label :referee %><br>
+    <%= f.collection_select(:referee_id, Referee.all, :id, :name) %><br><br>
     <%= f.label "Location" %>
     <%= f.collection_select(:location_id, Location.all, :id, :name, :include_blank => true) %><br>
         <div style="margin-left: 40px">

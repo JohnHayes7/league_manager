@@ -12,7 +12,10 @@
 
 <h3>Here are a list of matches yet to be assigned:</h3>
     <% @matches.each do |m| %>
-        <%= m.date %> <%= m.competition.name %>
-        <%= m.time %><br>
-        <%= m.location.name %><br>
+        <div id="match-display">
+            <%= m.date %> <%= m.competition.name %>
+            <%= m.time %><br>
+            <%= m.location.name %><br><br>
+            <%= link_to "Assign this match to referee", assign_referee_path(@ref, m), method: :post %>
+        </div><br>
     <% end %>
