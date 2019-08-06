@@ -31,4 +31,5 @@ body{
  #match-display{
      border: 1px black solid;  
      width: 25%; 
+     padding: 2%;
  }

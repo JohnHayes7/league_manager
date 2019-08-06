@@ -9,8 +9,8 @@
 
 <% @location.matches.each do |m| %>
     <div id="match-display">
-    <h4> <%=m.teams[0].name %> vs <%= m.teams[1].name %></h4>
+    <strong><%= link_to "#{m.teams[0].name} vs #{m.teams[1].name}", competition_match_path(m.competition_id, m) %></strong><br>
     <%= m.competition.name %>
     <%= m.date %> <%= m.time %>
-    </div>
+    </div><br>
 <% end %>
