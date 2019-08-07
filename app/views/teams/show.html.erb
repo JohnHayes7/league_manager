@@ -27,8 +27,21 @@
     <% end %>
 
 <h2>Roster:</h2>
+<table>
+    <tr>
+        <th>Player Name</th>
+        <th>Jersey Number</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+    </tr>
         <% @team.players.each do |p| %>
-            <%= p.name %>
+        <tr>
+            <td><%= p.name %></td>
+            <td><%= p.jersey_number %></td>
+            <td><%= p.phone_number %></td>
+            <td><%= p.email %></td>
+        </tr>
         <% end %>
+</table>
 
 <h3> Add a New player </h3>
