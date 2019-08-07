@@ -28,7 +28,9 @@ Rails.application.routes.draw do
     resources :match_notes, only:[:new, :create, :edit, :destroy]
   end
 
-  resources :coaches
+  resources :coaches do 
+    resources :players, only:[:new, :create]
+  end
 
   
 
