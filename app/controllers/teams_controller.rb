@@ -20,6 +20,14 @@ class TeamsController < ApplicationController
         @team = Team.find(params[:id])
     end
 
+    def update
+        @team = Team.find(params[:id])
+        @team.coach_id = params[:team][:coach_id]
+        @team.save
+
+        redirect_to team_path(@team)
+    end
+
     private
     
     def team_params

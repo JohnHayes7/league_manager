@@ -1,2 +1,19 @@
 <h1><%= @team.name %></h1>
-<%= @team.coach.name %>
+<% if @team.coach_id != 5 %>
+    <div id="coach-contact-box">
+        <strong>Coach <%= @team.coach.last_name %> Contact info</strong>
+        <p id="coach-info-box">
+            <%= @team.coach.name %><br>
+            <%= @team.coach.email %><br>
+            <%= @team.coach.phone_number %>
+        </p>
+    </div><br>
+<% else %>
+    <strong>Coach: <%= @team.coach.name %></strong>
+<% end %>
+
+<%= form_for @team, url: {action: 'update'}  do |f| %>
+    <%= f.label "Assign or change coach" %>
+    <%= f.collection_select(:coach_id, Coach.all, :id, :name) %><br>
+    <%= f.submit %>
+<% end %>   
