@@ -1,1 +1,13 @@
-<h1>Create a new Coach </h1>
+<h1>Coach Signup Form</h1>
+
+<%= form_for @coach do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :email %>
+    <%= f.text_field :email %><br>
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+    <%= f.submit %>
+<% end %>
