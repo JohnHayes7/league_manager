@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_145110) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "coach_id", default: 2
+    t.integer "coach_id", default: 5
   end
 
 end
