@@ -19,5 +19,9 @@ class Match < ApplicationRecord
         "#{self.date} #{self.time}"
     end
 
+    def teams_display
+        "#{self.teams[0].name} vs. #{self.teams[1].name}"
+    end
+
     
 end

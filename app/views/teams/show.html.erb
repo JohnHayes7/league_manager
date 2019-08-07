@@ -17,3 +17,18 @@
     <%= f.collection_select(:coach_id, Coach.all, :id, :name) %><br>
     <%= f.submit %>
 <% end %>   
+
+<h2> Schedule: </h2>
+    <% @team.matches.each do |m| %>
+        <%= m.teams_display %><br>
+        <%= m.date_and_time %><br>
+        <%= m.location.name %><br>
+        <%= m.location_notes %><br><br>
+    <% end %>
+
+<h2>Roster:</h2>
+        <% @team.players.each do |p| %>
+            <%= p.name %>
+        <% end %>
+
+<h3> Add a New player </h3>
