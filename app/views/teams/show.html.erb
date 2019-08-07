@@ -45,3 +45,14 @@
 </table>
 
 <h3> Add a New player </h3>
+<%= form_for @player, url: {action: 'create'} do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :jersey_number %>
+    <%= f.text_field :jersey_number %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+    <%= f.submit %>
+<% end %>

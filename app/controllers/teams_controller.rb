@@ -18,6 +18,7 @@ class TeamsController < ApplicationController
 
     def show
         @team = Team.find(params[:id])
+        @player = @team.players.build
     end
 
     def update
