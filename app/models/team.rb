@@ -4,4 +4,6 @@ class Team < ApplicationRecord
     has_many :players
     has_and_belongs_to_many :matches
     has_many :competitions, through: :matches
+
+    accepts_nested_attributes_for :players
 end
