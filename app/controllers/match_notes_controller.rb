@@ -6,7 +6,9 @@ class MatchNotesController < ApplicationController
     end
 
     def create
+       
         note = MatchNote.new(match_note_params)
+        note.referee_id = params[:referee_id]
         match = Match.find(params[:match_note][:match_id])
         if note.save
 
