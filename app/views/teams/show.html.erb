@@ -1,4 +1,5 @@
 <h1><%= @team.name %></h1>
+<div id="coach-info"
 <% if @team.coach_id != 5 %>
     <div id="coach-contact-box">
         <strong>Coach <%= @team.coach.last_name %> Contact info</strong>
@@ -20,19 +21,21 @@
 
 <h2> Schedule: </h2>
     <% @team.matches.each do |m| %>
-        <%= m.teams_display %><br>
-        <%= m.date_and_time %><br>
-        <%= m.location.name %><br>
-        <%= m.location_notes %><br><br>
+        <div id="match-display">
+            <%= m.teams_display %><br>
+            <%= link_to "#{m.date_and_time}", competition_match_path(m.competition.id, m) %><br>
+            <%= link_to "#{m.location.name}", location_path(m.location) %><br>
+            <%= m.location_notes %><br><br>
+        </div><br>
     <% end %>
 
 <h2>Roster:</h2>
 <table>
     <tr>
-        <th>Player Name</th>
-        <th>Jersey Number</th>
-        <th>Phone Number</th>
-        <th>Email</th>
+        <th> Player Name </th>
+        <th> Jersey Number </th>
+        <th> Phone Number </th>
+        <th> Email </th>
     </tr>
         <% @team.players.each do |p| %>
         <tr>
@@ -49,10 +52,10 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.label :jersey_number %>
-    <%= f.text_field :jersey_number %>
+    <%= f.text_field :jersey_number %><br>
     <%= f.label :email %>
     <%= f.text_field :email %>
     <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number %><br>
     <%= f.submit %>
 <% end %>

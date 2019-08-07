@@ -30,8 +30,9 @@ body{
 
  #match-display{
      border: 1px black solid;  
-     width: 25%; 
-     padding: 2%;
+     width: 20%; 
+     padding-left: 2%;
+     padding-top: 1%;
  }
 
  #match-show-info{
