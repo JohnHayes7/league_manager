@@ -8,13 +8,14 @@
         <%= @coach.email %><br>
         <%= @coach.phone_number %>
     </p>
-</div>
+</div><br>
 
 <% if @coach.teams.empty? %>
-    <h3>You Currently Don't Have Any Teams</h3>
-    <h3>Please contact league administrator %>
+    <strong>You Currently Don't Have Any Teams</strong><br>
+    <strong>Please contact league administrator to have teams assigned</strong>
 <% else %>
     <% @coach.teams.each do |t| %>
         <%= t.name %>
     <% end %>
 <% end %>
+
