@@ -1,1 +1,20 @@
-<h1>Coach <%= @coach.last_name %></h1>
+<h1>Coach <%= @coach.last_name %> Page</h1>
+
+
+<div id="coach-contact-box">
+    <strong>Coach <%= @coach.last_name %> Contact info</strong>
+    <p id="coach-info-box">
+        <%= @coach.name %><br>
+        <%= @coach.email %><br>
+        <%= @coach.phone_number %>
+    </p>
+</div>
+
+<% if @coach.teams.empty? %>
+    <h3>You Currently Don't Have Any Teams</h3>
+    <h3>Please contact league administrator %>
+<% else %>
+    <% @coach.teams.each do |t| %>
+        <%= t.name %>
+    <% end %>
+<% end %>

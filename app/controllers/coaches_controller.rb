@@ -22,7 +22,7 @@ class CoachesController < ApplicationController
     private
 
     def coach_params
-        params.require(:coach).permit(:name, :email, :phone, :password_digest)
+        params.require(:coach).permit(:name, :email, :phone_number, :password_digest)
     end
 
 end
