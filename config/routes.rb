@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :competitions, only:[:new]
 
-  resources :teams, only:[:new, :create, :index]  
+  resources :teams, only:[:new, :create, :index, :show]  
 
   resources :locations, only:[:new, :index, :create, :show]
 
