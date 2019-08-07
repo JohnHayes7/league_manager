@@ -45,7 +45,7 @@
 </table>
 
 <h3> Add a New player </h3>
-<%= form_for @player, url: {action: 'create'} do |f| %>
+<%= form_for(@player, url: team_players_path(@player.team_id, @player)) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.label :jersey_number %>
