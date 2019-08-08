@@ -38,15 +38,14 @@
         <th> Jersey Number </th>
         <th> Phone Number </th>
         <th> Email </th>
-        <th></th>
     </tr>
         <% @team.players.each do |p| %>
+            
         <tr>
             <td><%= p.name %></td>
             <td><%= p.jersey_number %></td>
             <td><%= p.phone_number %></td>
             <td><%= p.email %></td>
-            <td><%= link_to "edit", edit_player_path %></td>
         </tr>
         <% end %>
 </table>

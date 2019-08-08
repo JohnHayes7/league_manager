@@ -18,6 +18,9 @@ class SeasonsController < ApplicationController
 
     end
 
+    def index
+        @seasons = Season.all
+    end
 
     private
 

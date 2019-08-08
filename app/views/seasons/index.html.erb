@@ -1,0 +1,5 @@
+<h1>Select A Season</h1>
+
+<% @seasons.each do |s| %>
+    <%= link_to "#{s.year}", season_path(s) %><br>
+<% end %>
