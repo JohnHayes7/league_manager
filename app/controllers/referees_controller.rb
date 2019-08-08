@@ -16,7 +16,7 @@ class RefereesController < ApplicationController
     end
 
     def show
-        if current_user.referee?
+        if current_user.referee? || current_user.admin?
             @ref = Referee.find(params[:id])
             @matches = Match.where("referee_id = 1")
         else

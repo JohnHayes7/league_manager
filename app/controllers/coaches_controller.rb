@@ -15,7 +15,10 @@ class CoachesController < ApplicationController
     end
 
     def show
-        @coach = Coach.find(params[:id])
+        if current_user.coach?
+            @coach = Coach.find(params[:id])
+        else
+        render login_path
     end
 
 
