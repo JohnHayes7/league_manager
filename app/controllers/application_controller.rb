@@ -5,8 +5,10 @@ class ApplicationController < ActionController::Base
             @current_user ||= Administrator.find(session[:admin_id])
         elsif session[:ref_id]
             @current_user ||= Referee.find(session[:ref_id])
-        else
+        elsif session[:coach_id]
             @current_user ||= Coach.find(session[:coach_id])
+        else
+            nil
         end
     end
 

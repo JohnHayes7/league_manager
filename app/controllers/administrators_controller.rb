@@ -12,7 +12,11 @@ class AdministratorsController < ApplicationController
     end
 
     def show
-        @admin = Administrator.find_by(:id => params[:id])
+        if logged_in? && current_user.admin?
+            @admin = Administrator.find_by(:id => params[:id])
+        else
+            redirect_to login_path
+        end
         
     end
 
