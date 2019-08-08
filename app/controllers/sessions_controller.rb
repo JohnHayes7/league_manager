@@ -5,10 +5,11 @@ class SessionsController < ApplicationController
     end
 
     def create
+        raise params.inspect
        @user = Administrator.find_by(email: params[:session][:email]) || @user = Referee.find_by(email: params[:session][:email]) || @user = Coach.find_by(email: params[:session][:email])
-        
        if @user && @user.authenticate(params[:session][:password])
-            
+            session[:user_id] = @user.id
+            current_user(@user)
             if @user.admin?
                 
                 redirect_to administrator_path(@user)
