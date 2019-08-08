@@ -18,7 +18,7 @@ class CoachesController < ApplicationController
         if current_user.coach?
             @coach = Coach.find(params[:id])
         else
-        render login_path
+        render login_path   
     end
 
 
