@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
 
     def edit
         raise params.inspect
-        # @player = Player.find(params[:id])
+        @player = Player.find(params[:id])
     end
 
     def update
