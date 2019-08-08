@@ -2,8 +2,11 @@ class CompetitionsController < ApplicationController
     
 
     def create
-        if name.valid?
-            @comp = Competition.create(comp_params)
+        @comp = Competition.new(comp_params)
+        @comp.season_id = params[:season_id]
+        if @comp.save
+            
+            redirect_to season_path(params[:season_id])
         end
     end
 
@@ -13,7 +16,7 @@ class CompetitionsController < ApplicationController
     end
 
     def new
-        raise params.inspect
+        @season = Season.find(params[:season_id])
         @comp = Competition.new
         @comp.matches.build
     end

@@ -1,5 +1,6 @@
 <h2>Create a new Competition</h2>
-<% form_for(@comp) do |f| %>
-    <strong>Select a Season for your new competition %></strong>
-    <%= f.collection_select(:season_id, Season.all, :id, :year) %>
+<%= form_for(@comp, url: season_competitions_path(@season)) do |f| %>
+    <%= f.label "Competition Name:" %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
 <% end %>
