@@ -16,9 +16,12 @@ class RefereesController < ApplicationController
     end
 
     def show
-        @ref = Referee.find(params[:id])
-        @matches = Match.where("referee_id = 1")
-        
+        if logged_in? && current_user.referee?
+            @ref = Referee.find(params[:id])
+            @matches = Match.where("referee_id = 1")
+        else
+            redirect_to login_path
+        end
     end
 
 
