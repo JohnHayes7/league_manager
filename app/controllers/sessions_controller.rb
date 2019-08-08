@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     end
 
     def create
+       @user = Administrator.find(params[:session][:email])
        
     end
 
