@@ -43,6 +43,14 @@ class MatchesController < ApplicationController
         end
     end
 
+    def destroy
+        if logged_in? && current_user.admin?
+            Match.destroy(params[:id])
+
+            redirect_to competition_path
+        end
+    end
+
     def assign
        @match = Match.find(params[:id])
        @match.referee_id = params[:referee_id]

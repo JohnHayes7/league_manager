@@ -1,16 +1,19 @@
 <h1>The <%=@comp.season.year %> - <%= @comp.name %> </h1>
 <br>
     <% if logged_in? && current_user.admin? %>
-        <h3><%= link_to "Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
-        <h3><%= link_to "Edit this Competition", edit_competition_path %></h3>
+            <h3><%= link_to "Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
+            <h3><%= link_to "Edit this Competition", edit_competition_path %></h3>
     <% end %>
-    <% @comp.matches.each do |c| %>
+    <% @comp.matches.each do |m| %>
         <div id="match-display">
-            <%= c.date %>  <%= c.time %>  <br>
-            <%= c.teams[0].name %> vs. <%= c.teams[1].name %><br>
-            <%= link_to c.location.name, location_path(c.location) %> <%= c.location_notes %><br><br>
+            <%= m.date %>  <%= m.time %>  <br>
+            <%= m.teams[0].name %> vs. <%= m.teams[1].name %><br>
+            <%= link_to m.location.name, location_path(m.location) %> <%= m.location_notes %><br><br>
             <% if logged_in? && current_user.admin? %>
-                <%= link_to "Edit This Match", edit_competition_match_path(c.competition_id, c) %>
+                <%= link_to "Edit This Match", edit_competition_match_path(m.competition_id, m) %>
+                <%= link_to "Delete Match", competition_match_path(m), method: :delete %>
             <% end %>
         </div><br>
     <% end %>
+
+    <%= link_to "Back To Seasons Page", seasons_path %>
