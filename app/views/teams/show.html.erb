@@ -12,12 +12,13 @@
 <% else %>
     <strong>Coach: <%= @team.coach.name %></strong>
 <% end %>
-
-<%= form_for @team, url: {action: 'update'}  do |f| %>
-    <%= f.label "Assign or change coach" %>
-    <%= f.collection_select(:coach_id, Coach.all, :id, :name) %><br>
-    <%= f.submit %>
-<% end %>   
+<% if logged_in? && current_user.admin? %>
+    <%= form_for @team, url: {action: 'update'}  do |f| %>
+        <%= f.label "Assign or change coach" %>
+        <%= f.collection_select(:coach_id, Coach.all, :id, :name) %><br>
+        <%= f.submit %>
+    <% end %> 
+<% end %>  
 
 <div id="schedule-box">
     <h2> Schedule: </h2>
@@ -36,29 +37,36 @@
     <tr>
         <th> Player Name </th>
         <th> Jersey Number </th>
-        <th> Phone Number </th>
-        <th> Email </th>
+        <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
+            <th> Phone Number </th>
+            <th> Email </th>
+        <% end %>
     </tr>
         <% @team.players.each do |p| %>
             
         <tr>
             <td><%= p.name %></td>
             <td><%= p.jersey_number %></td>
-            <td><%= p.phone_number %></td>
-            <td><%= p.email %></td>
+            <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
+                <td><%= p.phone_number %></td>
+                <td><%= p.email %></td>
+            <% end %>
         </tr>
         <% end %>
 </table>
 
-<h3> Add a New player </h3>
-<%= form_for(@player, url: team_players_path(@player.team_id, @player)) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.label :jersey_number %>
-    <%= f.text_field :jersey_number %><br>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %><br>
-    <%= f.submit %>
+
+<% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
+    <h3> Add a New player </h3>
+    <%= form_for(@player, url: team_players_path(@player.team_id, @player)) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :jersey_number %>
+        <%= f.text_field :jersey_number %><br>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number %><br>
+        <%= f.submit %>
+    <% end %>
 <% end %>

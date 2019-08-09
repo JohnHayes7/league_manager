@@ -19,6 +19,7 @@ class CoachesController < ApplicationController
             @coach = Coach.find(params[:id])
         else
             redirect_to login_path 
+            
         end  
     end
 
