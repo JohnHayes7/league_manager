@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :competitions, only:[:new, :create]
   end
   
-  resources :competitions, only:[:show, :index, :edit] do
+  resources :competitions, only:[:show, :index, :edit, :update] do
     resources :matches, only:[:new, :create, :show, :edit, :update]
   end
 

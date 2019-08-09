@@ -21,9 +21,19 @@ class CompetitionsController < ApplicationController
         @comp.matches.build
     end
 
-    # def patch
-    #     raise params.inspect
-    # end
+    def edit
+        @comp = Competition.find(params[:id])
+    end
+
+   def update
+        @comp = Competition.find(params[:id])
+        @comp.update(comp_params)
+        if @comp.save
+            redirect_to competition_path(@comp)
+        else
+            render :edit
+        end
+   end
 
     private
 
