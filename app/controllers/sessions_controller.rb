@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
     def omniauth
         @user = Administrator.from_omniauth(auth)
         @user.save
-        if @user && @user.authenticate(params[:session][:password])
+        if @user 
             if @user.admin?
                 session[:admin_id] = @user.id
                 redirect_to administrator_path(@user)
