@@ -1,5 +1,5 @@
 <h1>Hello,  <%= @admin.first_name %></h1>
-<p> 
+<div> 
     <h3>What Would you like to do? </h3>
         <ul>
             <li><%= link_to "Create A New Season?", new_season_path %></li>
@@ -10,6 +10,22 @@
             <li><%= link_to "Create A New Location?", new_location_path %></li>
             <li><%= link_to "Create A New Administrator?", new_administrator_path %></li>
         </ul>  </br>
+</div>
 
-        <footer><%= link_to "Log Out", logout_path, method: "delete" %></footer>
-</p>
+<div id="teams-list">
+    <h3>View teams:</h3>
+    <% @teams.each do |t| %>
+        <%= link_to "#{t.name}", team_path(t) %><br>
+    <% end %>
+</div>
+
+<div id="coach-contacts">
+    <h3>Coach Contact List:</h3>
+        <% @coaches.each do |c| %>
+            <% if c.id != 5 %>
+                <%= link_to "#{c.name}", coach_path(c) %> - <%= c.email %> - <%= c.phone_number %><br>
+            <% end %>
+        <% end %>
+</div><br>
+
+<footer><%= link_to "Log Out", logout_path, method: "delete" %></footer>

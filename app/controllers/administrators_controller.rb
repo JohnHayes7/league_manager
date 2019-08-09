@@ -14,6 +14,8 @@ class AdministratorsController < ApplicationController
     def show
         if logged_in? && current_user.admin?
             @admin = Administrator.find_by(:id => params[:id])
+            @teams = Team.all
+            @coaches = Coach.all
         else
             redirect_to login_path
         end
