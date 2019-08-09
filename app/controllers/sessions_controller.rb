@@ -34,14 +34,31 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        @user = User.from_omniauth(auth)
+        @user = Administrator.from_omniauth(auth)
         @user.save
-        session[:user_id] = @user.id
-        redirect_to home_path
+        if @user && @user.authenticate(params[:session][:password])
+            if @user.admin?
+                session[:admin_id] = @user.id
+                redirect_to administrator_path(@user)
+                return
+
+            elsif @user.referee?
+                session[:ref_id] = @user.id
+                redirect_to referee_path(@user)
+                return
+
+            else 
+                session[:coach_id] = @user.id
+                redirect_to coach_path(@user)
+                return
+            end
+       else
+            render :new
+       end
     end
 
     private
-    
+
     def auth
         request.env['omniauth.auth']
     end
