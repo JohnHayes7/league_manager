@@ -1,7 +1,8 @@
 <h1>The <%=@comp.season.year %> - <%= @comp.name %> </h1>
 <br>
-    
-    <h3><%= link_to "Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
+    <% if logged_in? && current_user.admin? %>
+        <h3><%= link_to "Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
+    <% end %>
     <% @comp.matches.each do |c| %>
         <div id="match-display">
             <%= c.date %>  <%= c.time %>  <br>
