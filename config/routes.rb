@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :teams, only:[:index]
   resources :administrators, only:[:show, :new, :create]
   
-  resources :seasons, only:[:new, :create, :show, :index] do 
+  resources :seasons, only:[:new, :create, :show, :index, :edit, :destroy, :update] do 
     resources :competitions, only:[:new, :create]
   end
   

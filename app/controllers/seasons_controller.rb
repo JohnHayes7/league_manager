@@ -22,6 +22,18 @@ class SeasonsController < ApplicationController
         @seasons = Season.all
     end
 
+    def edit
+
+    end
+
+    def update
+
+    end
+
+    def destroy
+
+    end
+    
     private
 
     def season_params

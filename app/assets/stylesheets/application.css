@@ -68,7 +68,7 @@ body{
 
   .col-1-narrow, #options-box{
     position: relative;
-    border: 1px solid black;
+    border: 2px solid black;
     padding-left: 2%;
     padding-bottom: 1%;
     width: 40%;
@@ -77,7 +77,7 @@ body{
   .col-2-wide{
       position: relative;
       float: right;
-      border: 1px solid black;
+      border: 2px solid black;
       padding-left: 2%;
       width: 50%;
   }

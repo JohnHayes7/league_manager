@@ -14,16 +14,18 @@
 <div class="col-1-narrow"
     <div id="teams-list-box">
         <h3>View teams:</h3>
-        <% @teams.each do |t| %>
-            <%= link_to "#{t.name}", team_path(t) %><br>
-        <% end %>
+        <uL>
+            <% @teams.each do |t| %>
+            <li><%= link_to "#{t.name}", team_path(t) %></li>
+            <% end %>
+        </ul>
     </div><br>
 
     <div id="options-box"> 
         <h3>Options:</h3>
             <ul>
                 <li><%= link_to "Create A New Season", new_season_path %></li>
-                <li><%= link_to "Add Competition to season?" %></li>
+                <li><%= link_to "Add Competition to season?", seasons_path %></li>
                 <li><%= link_to "Create A New Team", new_team_path %></li>
                 <li><%= link_to "Create A New Coach", new_coach_path %></li>
                 <li><%= link_to "Create A New Referee", new_referee_path %></li>
