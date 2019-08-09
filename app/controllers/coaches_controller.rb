@@ -15,7 +15,7 @@ class CoachesController < ApplicationController
     end
 
     def show
-        if logged_in? && current_user.coach?
+        if logged_in? && current_user.coach? || logged_in? && current_user.admin?
             @coach = Coach.find(params[:id])
         else
             redirect_to login_path 
