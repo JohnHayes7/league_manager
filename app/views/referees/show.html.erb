@@ -10,18 +10,23 @@
             <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %><br>
             <%= m.location.name %><br><br>
             <%= link_to "Add Match Notes", new_referee_match_note_path(@ref) %><br>
-            <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %><br><br>
+            <% if logged_in? && current_user.admin? %>
+                <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %><br><br>
+            <% end %>
         </div><br>
     <% end %>
 <% end %>
 
-<h3>Here are a list of matches yet to be assigned:</h3>
+<h3>Here are a list of matches yet to be assigned:<br>
+<em>You can contact the league administratrion to request match assigments</em></h3>
     <% @matches.each do |m| %>
         <div id="match-display">
             <%= m.competition.name %><br>
             <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %><br>
             <%= m.location.name %><br><br>
-            <%= link_to "Assign this match to referee", assign_referee_match_path(@ref, m), method: :post %>
+            <% if logged_in? && current_user.admin? %>
+                <%= link_to "Assign this match to referee", assign_referee_match_path(@ref, m), method: :post %>
+            <% end %>
         </div><br>
     <% end %>
 
