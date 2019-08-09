@@ -34,7 +34,11 @@ class SeasonsController < ApplicationController
     end
 
     def destroy
+        if logged_in? && current_user.admin?
+            Season.destroy(params[:id])
 
+            redirect_to seasons_path
+        end
     end
 
     private

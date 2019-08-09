@@ -14,5 +14,10 @@
     <% end %>
     <br><br>
     <%= link_to "Create a new competition to this season", new_season_competition_path(@season) %>
+    <br><br>
+    <%= form_for @season, method: :delete do |f| %>
+        <%= f.submit "Delete Season" %>
+    <% end %>
+
 <% end %>
 
