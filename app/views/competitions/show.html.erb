@@ -8,6 +8,8 @@
             <%= c.date %>  <%= c.time %>  <br>
             <%= c.teams[0].name %> vs. <%= c.teams[1].name %><br>
             <%= link_to c.location.name, location_path(c.location) %> <%= c.location_notes %><br><br>
-            <%= link_to "Edit This Match", edit_competition_match_path(c.competition_id, c) %>
+            <% if logged_in? && current_user.admin? %>
+                <%= link_to "Edit This Match", edit_competition_match_path(c.competition_id, c) %>
+            <% end %>
         </div><br>
     <% end %>
