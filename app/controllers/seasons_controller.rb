@@ -22,18 +22,21 @@ class SeasonsController < ApplicationController
         @seasons = Season.all
     end
 
-    def edit
-
-    end
-
     def update
 
+        @season = Season.find(params[:id])
+        @season.update(season_params)
+        if @season.save
+            redirect_to season_path(@season)
+        else
+            render :edit
+        end
     end
 
     def destroy
 
     end
-    
+
     private
 
     def season_params
