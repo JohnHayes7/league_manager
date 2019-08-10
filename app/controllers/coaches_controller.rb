@@ -41,6 +41,10 @@ class CoachesController < ApplicationController
 
     def destroy
         @coach = Coach.find(params[:id])
+        @coach.teams.each do |t|
+            t.coach_id = 5
+            t.save
+        end
         @coach.destroy
 
         redirect_to administrator_path(current_user.id)
