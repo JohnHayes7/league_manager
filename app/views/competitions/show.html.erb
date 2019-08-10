@@ -1,14 +1,18 @@
 <h1>The <%=@comp.season.year %> - <%= @comp.name %> </h1>
 <br>
-    <% if logged_in? && current_user.admin? %>
-            <h3><%= link_to "Create & Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
-            <h3><%= link_to "Edit this Competition", edit_competition_path %></h3>
-    <% end %>
+<div class="col-2-wide">
+    <div id="admin-options">
+        <% if logged_in? && current_user.admin? %>
+                <h3><%= link_to "Create & Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
+                <h3><%= link_to "Edit this Competition", edit_competition_path %></h3>
+        <% end %>
+    </div>
+</div>
     <% @comp.matches.each do |m| %>
         <div id="match-display">
             <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %>  <br>
             <%= m.teams[0].name %> vs. <%= m.teams[1].name %><br>
-            <%= link_to m.location.name, location_path(m.location) %> <%= m.location_notes %><br><br>
+            <strong> Location:</strong><%= link_to m.location.name, location_path(m.location) %> <br><strong>Notes:</strong><%= m.location_notes %><br><br>
             <% if logged_in? && current_user.admin? %>
                 <%= link_to "Edit This Match", edit_competition_match_path(m.competition_id, m) %>
                 <%= link_to "Delete Match", competition_match_path(m.competition_id, m.id), :confirm => "Are you sure you want to delete match?", :method => :delete %>            

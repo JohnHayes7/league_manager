@@ -1,23 +1,29 @@
 <h1>The <%= @season.year %> Season</h1>
 
-<strong>Competitions For This Season: </strong>
-<ul>
-    <% @season.competitions.each do |c| %>
-        <li><%= link_to c.name, competition_path(c) %></li>
-    <% end %>
-</ul>
-<% if current_user.admin? %>
-    <h4>Add competition to this season:</h4>
-    <%= form_for @season, url: {action: 'update'} do |f| %>
-        <%= f.collection_check_boxes(:competition_ids, Competition.all, :id, :name) %>
-        <%= f.submit %>
-    <% end %>
-    <br><br>
-    <%= link_to "Create a new competition to this season", new_season_competition_path(@season) %>
-    <br><br>
-    <%= form_for @season, method: :delete do |f| %>
-        <%= f.submit "Delete Season" %>
-    <% end %>
+<div class="col-2-wide">
+    <% if current_user.admin? %>
+    <h2>Administrator Options:</h2>
+        <h4>Add competition to this season:</h4>
+        <%= form_for @season, url: {action: 'update'} do |f| %>
+            <%= f.collection_check_boxes(:competition_ids, Competition.all, :id, :name) %>
+            <%= f.submit %>
+        <% end %>
+        <br><br>
+        <%= link_to "Create a new competition to this season", new_season_competition_path(@season) %>
+        <br><br>
+        <%= form_for @season, method: :delete do |f| %>
+            <%= f.submit "Delete Season" %>
+        <% end %>
 
-<% end %>
+    <% end %>
+</div>
+
+<div class="col-1-narrow">
+    <h2>Competitions For This Season: </h2>
+    <ul>
+        <% @season.competitions.each do |c| %>
+            <li><%= link_to c.name, competition_path(c) %></li>
+        <% end %>
+    </ul>
+</div>
 

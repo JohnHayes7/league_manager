@@ -3,3 +3,11 @@
 <% @seasons.each do |s| %>
     <%= link_to "#{s.year}", season_path(s) %><br>
 <% end %>
+<br><br>
+<% if logged_in? && current_user.admin? %>
+    <%= link_to "Back to HomePage", administrator_path(current_user.id) %>
+<% elsif logged_in? && current_user.referee? %>
+    <%= link_to "Back to Homepage", referee_path(current_user.id) %>
+<% elsif logged_in? && current_user.coach? %>
+    <%= link_to "Back to Homepage", coach_path(current_user.id) %>
+<% end %>
