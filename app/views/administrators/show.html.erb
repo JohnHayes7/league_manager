@@ -11,6 +11,15 @@
     </div><br>
 </div>
 
+<div class="col-2-wide">
+    <div id="seasons-box">
+                <h3> Seasons: </h3>
+                <% @seasons.each do |s| %>
+                    <%= link_to "#{s.year}", season_path(s) %><br>
+                <% end %>
+    </div><br><br>
+</div>
+
 <div class="col-1-narrow"
     <div id="teams-list-box">
         <h3>View teams:</h3>

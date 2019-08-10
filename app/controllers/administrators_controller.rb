@@ -16,6 +16,7 @@ class AdministratorsController < ApplicationController
             @admin = Administrator.find_by(:id => params[:id])
             @teams = Team.all
             @coaches = Coach.all
+            @seasons = Season.all
         else
             redirect_to login_path
         end

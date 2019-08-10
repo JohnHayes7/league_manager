@@ -1,5 +1,6 @@
 <div id="login-box">
-    <h3>Login</h3>
+    <h2><%= link_to "Log In with Google", '/auth/google_oauth2' %></h2>
+    <h2>Or Login By Email:</h2>
     <%= form_for(:session, url: login_path) do |f| %>
         <%= f.label :email %>
         <%= f.text_field :email, :placeholder => "Email Address" %><br>
