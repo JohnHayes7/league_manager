@@ -23,6 +23,22 @@ class CoachesController < ApplicationController
         end  
     end
 
+    def edit
+        @coach = Coach.find(params[:id])
+        if !logged_in? && current_user.coach? && current_user.id == @coach.id || !logged_in? && current_user.admin?
+            redirect_to coach_path(@coach)
+        end 
+    end
+
+    def update
+        @coach = Coach.find(params[:id])
+        @coach.update(coach_params)
+        if @coach.save
+
+            redirect_to coach_path(@coach)
+        end
+    end
+
 
     private
 

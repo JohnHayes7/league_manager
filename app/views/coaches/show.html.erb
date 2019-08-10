@@ -8,6 +8,9 @@
         <%= @coach.email %><br>
         <%= @coach.phone_number %>
     </p>
+    <% if current_user.admin? || current_user.coach? && current_user.id == @coach.id %>
+        <%= link_to "Edit", edit_coach_path(@coach) %>
+    <% end %>
 </div><br>
 
 <% if @coach.teams.empty? %>

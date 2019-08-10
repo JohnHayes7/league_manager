@@ -13,6 +13,7 @@
             <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %>  <br>
             <%= m.teams_display %><br>
             <strong> Location:</strong><%= link_to m.location.name, location_path(m.location) %> <br><strong>Notes:</strong><%= m.location_notes %><br><br>
+            
             <% if logged_in? && current_user.admin? %>
                 <%= link_to "Edit This Match", edit_competition_match_path(m.competition_id, m) %>
                 <%= link_to "Delete Match", competition_match_path(m.competition_id, m.id), :confirm => "Are you sure you want to delete match?", :method => :delete %>            
