@@ -39,6 +39,13 @@ class CoachesController < ApplicationController
         end
     end
 
+    def destroy
+        @coach = Coach.find(params[:id])
+        @coach.destroy
+
+        redirect_to administrator_path(current_user.id)
+    end
+
 
     private
 
