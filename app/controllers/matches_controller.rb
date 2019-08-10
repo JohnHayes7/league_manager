@@ -47,7 +47,7 @@ class MatchesController < ApplicationController
         if logged_in? && current_user.admin?
             Match.destroy(params[:id])
 
-            redirect_to competition_path
+            redirect_to competition_path(params[:competition_id])
         end
     end
 
