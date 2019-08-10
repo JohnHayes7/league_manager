@@ -1,5 +1,5 @@
 <h1><%= @team.name %></h1>
-<div id="coach-info"
+<div id="coach-info">
 <% if @team.coach_id != 5 %>
     <div id="coach-contact-box">
         <strong>Coach <%= @team.coach.last_name %> Contact info</strong>
@@ -68,4 +68,8 @@
         <%= f.text_field :phone_number %><br>
         <%= f.submit %>
     <% end %>
+<% end %>
+
+<% if logged_in? && current_user.admin? %>
+    <%= link_to "Delete this team", team_path(@team), :method => 'delete' %>
 <% end %>

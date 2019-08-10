@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :competitions, only:[:new]
 
-  resources :teams, only:[:new, :create, :index, :show, :update] do
+  resources :teams, only:[:new, :create, :index, :show, :update, :edit, :destroy] do
     resources :players, only:[:create, :edit, :update]
   end
 

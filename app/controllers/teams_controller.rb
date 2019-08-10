@@ -25,8 +25,15 @@ class TeamsController < ApplicationController
         @team = Team.find(params[:id])
         @team.coach_id = params[:team][:coach_id]
         @team.save
-
+         
         redirect_to team_path(@team)
+    end
+
+    def destroy
+        t = Team.find(params[:id])
+        t.destroy
+
+        redirect_to administrator_path(current_user.id)
     end
 
     private
