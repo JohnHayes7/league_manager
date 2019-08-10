@@ -21,7 +21,7 @@ class Match < ApplicationRecord
 
     def teams_display
         if  self.teams[0] == nil
-                 "TBD"
+                 "TBD" 
         elsif self.teams[1] == nil
                 "TBD"
         else
