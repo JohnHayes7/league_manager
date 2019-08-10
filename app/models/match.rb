@@ -20,7 +20,13 @@ class Match < ApplicationRecord
     end
 
     def teams_display
-        "#{self.teams[0].name} vs. #{self.teams[1].name}"
+        if  self.teams[0] == nil
+                 "TBD"
+        elsif self.teams[1] == nil
+                "TBD"
+        else
+            "#{self.teams[0].name} vs. #{self.teams[1].name}"
+        end
     end
 
     

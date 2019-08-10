@@ -1,14 +1,19 @@
 <div id="match-show-info">
-    <h2><%= link_to "#{@match.teams[0].name}", team_path(@match.teams[0].id) %> vs <%= link_to "#{@match.teams[1].name}", team_path(@match.teams[1].id) %></h2>
-    <p>
-        <%= link_to "#{@match.competition.name}", competition_path(@match.competition) %><br>
-        <%= @match.date %> <%= @match.time %><br>
-        <%= link_to "#{@match.location.name}", location_path(@match.location) %><br>
-        <%= @match.location.street_address %><br>
-        <%= @match.location.city %><br>
-        <%= @match.location.state %>
-        <%= @match.location.zip_code %>
-    </p>
+    <% if @match.teams[0] != nil && @match.teams[1] != nil %>
+        <h2><%= link_to "#{@match.teams[0].name}", team_path(@match.teams[0].id) %> vs <%= link_to "#{@match.teams[1].name}", team_path(@match.teams[1].id) %></h2>
+    <% else %>
+        <h2> Match Teams TBD </h2>    
+    <% end %>    
+        <p>
+            <%= link_to "#{@match.competition.name}", competition_path(@match.competition) %><br>
+            <%= @match.date %> <%= @match.time %><br>
+            <%= link_to "#{@match.location.name}", location_path(@match.location) %><br>
+            <%= @match.location.street_address %><br>
+            <%= @match.location.city %><br>
+            <%= @match.location.state %>
+            <%= @match.location.zip_code %>
+        </p>
+   
 
     <p>
         <strong>Referee:</strong>
