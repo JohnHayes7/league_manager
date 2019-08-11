@@ -20,4 +20,11 @@ class Coach < ApplicationRecord
           user.password = SecureRandom.hex
         end
     end
+
+    def reassign_coach_teams
+        self.teams.each do |t|
+            t.coach_id = 5
+            t.save
+        end
+    end
 end
