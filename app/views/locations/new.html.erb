@@ -1,4 +1,15 @@
 <h1>Create a new location </h1>
+
+<% if @location.errors.any? %>
+  <div id="error_explanation"> 
+    <ul>
+    <% @location.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div><br>
+<% end %>
+
 <%= form_for(@location) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
