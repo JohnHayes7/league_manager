@@ -5,10 +5,10 @@ class CoachesController < ApplicationController
     end
 
     def create
-        coach = Coach.new(coach_params)
-        if coach.save
+        @coach = Coach.new(coach_params)
+        if @coach.save
 
-            redirect_to coach_path(coach)
+            redirect_to coach_path(@coach)
         else
             render :new
         end

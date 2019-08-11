@@ -2,14 +2,13 @@ class RefereesController < ApplicationController
 
     def new
         @ref = Referee.new
-        binding.pry
     end
 
     def create
-        ref = Referee.new(ref_params)
-        if ref.save
+        @ref = Referee.new(ref_params)
+        if @ref.save
 
-            redirect_to referee_path(ref)
+            redirect_to referee_path(@ref)
         else
            
             render :new

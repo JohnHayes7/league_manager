@@ -2,10 +2,11 @@ class Referee < ApplicationRecord
     has_many :matches
     has_many :match_notes
 
-    validates :name, :presence => {:message => "You Must Provide a Name to Create and Account"}
-    validates :email, :presence => {:message => "You Must Provide a email to Create and Account"},
+    validates :name, :presence => {:message => "Must be Provided to Create an Account"}
+    validates :email, :presence => {:message => "Must be Provided to Create an Account"},
                       :uniqueness => {:message => "This Email Address is already associated to an account.  Please Login"}
-    validates :password, :length => {in: 6..10, :message => "Passwords must between 6 and 10 characters long"}
+    validates :password, :length => {in: 6..10, :message => "must between 6 and 10 characters long"}
+    validates :phone, :presence => {:message => "Must be Provided to Create an Account"}
 
     has_secure_password
 
@@ -20,5 +21,5 @@ class Referee < ApplicationRecord
           user.password = SecureRandom.hex
         end
     end
-    
+
 end

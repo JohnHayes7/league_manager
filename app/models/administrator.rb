@@ -1,8 +1,9 @@
 class Administrator < ApplicationRecord
-    validates :name, :presence => {:message => "You Must Provide a Name to Create and Account"}
-    validates :email, :presence => {:message => "You Must Provide a email to Create and Account"},
-                      :uniqueness => {:message => "This Email Address is already associated to an account.  Please Login"}
-    validates :password, :length => {in: 6..10, :message => "Passwords must between 6 and 10 characters long"}
+  validates :name, :presence => {:message => "Must be Provided to Create an Account"}
+  validates :email, :presence => {:message => "Must be Provided to Create an Account"},
+                    :uniqueness => {:message => "This Email Address is already associated to an account.  Please Login"}
+  validates :password, :length => {in: 6..10, :message => "must between 6 and 10 characters long"}
+  
     has_secure_password
 
     def first_name
