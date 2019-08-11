@@ -30,8 +30,9 @@ class TeamsController < ApplicationController
     end
 
     def destroy
-        t = Team.find(params[:id])
-        t.destroy
+        team = Team.find(params[:id])
+        team.lose_coach
+        team.destroy
 
         redirect_to administrator_path(current_user.id)
     end

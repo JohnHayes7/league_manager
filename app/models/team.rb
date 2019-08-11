@@ -6,4 +6,8 @@ class Team < ApplicationRecord
     has_many :competitions, through: :matches
 
     accepts_nested_attributes_for :players
+
+    def lose_coach
+        binding.pry
+    end
 end
