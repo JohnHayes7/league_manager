@@ -11,7 +11,6 @@ class PlayersController < ApplicationController
     end
 
     def edit
-        raise params.inspect
         @player = Player.find(params[:id])
     end
 

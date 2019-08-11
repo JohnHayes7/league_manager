@@ -43,5 +43,10 @@ class Match < ApplicationRecord
        
         count < 3
     end
+
+    def self.unassigned
+        # referee_id: 1 is the id of "No Referee assigned to this match"
+        self.where(("referee_id = 1"))
+    end
     
 end

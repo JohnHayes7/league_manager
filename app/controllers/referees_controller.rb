@@ -18,9 +18,7 @@ class RefereesController < ApplicationController
     def show
         if logged_in? && current_user.referee? || logged_in? && current_user.admin?
             @ref = Referee.find(params[:id])
-            # referee_id: 1 is the id of "No Referee assigned to this match"
-            # @matches is a list of unassigned matches referees can pick from
-            @matches = Match.where("referee_id = 1")
+            @unassigned_matches = Match.unassigned
         else
             redirect_to login_path
         end

@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
                 end
         else
             flash[:error] = "Be sure two teams are selected to create a match"
-            redirect_to new_competition_match_path
+            render :new
         end
     end
 

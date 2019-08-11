@@ -22,4 +22,23 @@ class Referee < ApplicationRecord
         end
     end
 
+    def define_and_route
+        binding.pry
+        if self.admin?
+            session[:admin_id] = self.id
+            redirect_to administrator_path(self)
+            return
+
+        elsif self.referee?
+            session[:ref_id] = self.id
+            redirect_to referee_path(self)
+            return
+
+        else 
+            session[:coach_id] = self.id
+            redirect_to coach_path(self)
+            return
+        end
+    end
+    
 end
