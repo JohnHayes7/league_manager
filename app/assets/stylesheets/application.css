@@ -85,3 +85,9 @@ body{
   h1{
       padding-left: 1%;
   }
+
+  .field_with_errors {
+    padding: 2px;
+    border: 1px solid red;
+    display: table;
+  }
