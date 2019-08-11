@@ -29,5 +29,17 @@ class Match < ApplicationRecord
         end
     end
 
+    def assign_ref(id)
+        self.referee_id = id
+        self.save
+    end
+
+    def unassign_ref
+        self.referee_id = 1
+        self.save
+    end
+
+
+
     
 end
