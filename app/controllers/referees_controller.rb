@@ -2,6 +2,7 @@ class RefereesController < ApplicationController
 
     def new
         @ref = Referee.new
+        binding.pry
     end
 
     def create
@@ -10,7 +11,7 @@ class RefereesController < ApplicationController
 
             redirect_to referee_path(ref)
         else
-            flash[:error] = "All fields required to create a new referee account"
+           
             render :new
         end
     end

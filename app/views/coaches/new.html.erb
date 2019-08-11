@@ -1,13 +1,23 @@
 <h1>Coach Signup Form</h1>
 
+<% if @coach.errors.any? %>
+  <div id="error_explanation"> 
+    <ul>
+    <% @coach.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div><br>
+<% end %>
+
 <%= form_for @coach do |f| %>
-    <%= f.label :name %>
+    <%= f.label "Name" %>
     <%= f.text_field :name %><br>
-    <%= f.label :email %>
+    <%= f.label "Email" %>
     <%= f.text_field :email %><br>
     <%= f.label :phone_number %>
     <%= f.text_field :phone_number %><br>
-    <%= f.label :password %>
+    <%= f.label "Password" %>
     <%= f.password_field :password %><br>
     <%= f.submit %>
 <% end %>

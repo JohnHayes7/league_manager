@@ -1,8 +1,16 @@
-<% if flash[:error] %>
-    <%= flash[:error] %>
+<h1>Create a new Referee Account</h1>
+
+<% if @ref.errors.any? %>
+  <div id="error_explanation"> 
+    <ul>
+    <% @ref.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div><br>
 <% end %>
 
-<h1>Create a new Referee Account</h1>
+
 <%= form_for(@ref) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br>
