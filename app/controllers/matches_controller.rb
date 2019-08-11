@@ -7,15 +7,12 @@ class MatchesController < ApplicationController
     end
 
     def create
-       
-       if params[:match][:team_ids].count == 3 
-            @match = Match.new(match_params)
-            @match.competition_id = params[:competition_id]
-            
+        @match = Match.new(match_params)
+       if @match.teams_count_valid?(params[:match][:team_ids].count)
                 if @match.save
                         redirect_to competition_path(@match.competition_id)
                 else
-                        # Need to add error Message
+                        flash[:error] = "Match could not be saved. Please try again."
                         render :new
                 end
         else

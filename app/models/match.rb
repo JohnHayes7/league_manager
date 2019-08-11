@@ -39,7 +39,9 @@ class Match < ApplicationRecord
         self.save
     end
 
-
-
+    def teams_count_valid?(count)
+       
+        count < 3
+    end
     
 end
