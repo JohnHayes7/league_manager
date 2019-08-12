@@ -40,6 +40,7 @@
         <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
             <th> Phone Number </th>
             <th> Email </th>
+            
         <% end %>
     </tr>
         <% @team.players.each do |p| %>
@@ -49,6 +50,7 @@
             <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
                 <td><%= p.phone_number %></td>
                 <td><%= p.email %></td>
+                        
             <% end %>
         </tr>
         <% end %>
