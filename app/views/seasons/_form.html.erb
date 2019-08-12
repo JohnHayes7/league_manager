@@ -1,0 +1,16 @@
+<%= form_for(season) do |f| %>
+    <%= f.label "Please enter the year of the season" %>
+    <%= f.text_field :year %><br>
+        <% if !Competition.all.empty? %>
+            <%= f.label "Select competitions to add to this season:" %><br>
+            <%= f.collection_check_boxes(:competition_ids, Competition.all, :id, :name) %><br><br>
+        <% else %>
+            <h4>There are no competitions to add to this season</h4>
+        <% end %>
+        <%= f.fields_for :competitions do |comps| %>
+            <%= comps.label "Create a new competition:" %>
+            <%= comps.text_field :name %><br>
+         <% end %>
+
+    <%= f.submit %>
+<% end %>

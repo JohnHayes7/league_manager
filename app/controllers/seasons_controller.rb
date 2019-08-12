@@ -18,6 +18,10 @@ class SeasonsController < ApplicationController
 
     end
 
+    def edit
+        @season = Season.find(params[:id])
+    end
+
     def index
         @seasons = Season.all
     end
