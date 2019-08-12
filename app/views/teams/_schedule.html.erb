@@ -1,0 +1,11 @@
+<div id="schedule-box">
+    <h2> Schedule: </h2>
+    <h4> Upcoming Matches: </h4>
+        <% team.upcoming_matches.each do |m| %>
+            <%= render partial: 'match_display', locals: {m: m} %>
+        <% end %>
+    <h4> Past Matches: </h4>
+        <% team.past_matches.each do |m| %>
+            <%= render partial: 'match_display', locals: {m: m} %>
+        <% end %>
+</div>

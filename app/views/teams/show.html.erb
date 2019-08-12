@@ -15,7 +15,7 @@
     <%= render partial: "coach_assignment", locals: {team: @team} %>
 <% end %>  
 
-<%= render partial: "match_display", locals: {team: @team} %>
+<%= render partial: "schedule", locals: {team: @team} %>
 
 <h2>Roster:</h2>
 <% if @team.players.count > 0 %>

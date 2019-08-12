@@ -10,4 +10,14 @@ class Team < ApplicationRecord
     def lose_coach
         self.coach.teams.delete(self.id)
     end
+
+    def past_matches
+        self.matches.where("date < ?", Time.zone.today)
+    end
+
+    def upcoming_matches
+        self.matches.where("date >= ?", Time.zone.today)
+    end
+
+
 end
