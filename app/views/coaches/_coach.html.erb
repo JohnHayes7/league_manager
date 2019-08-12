@@ -1,5 +1,5 @@
 <p id="coach-info-box">
-    <%= @coach.name %><br>
-    <%= @coach.email %><br>
-    <%= @coach.phone_number %>
+    <%= link_to "#{coach.name}", coach_path(coach) %><br>
+    <%= coach.email %><br>
+    <%= coach.phone_number %>
 </p>

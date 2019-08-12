@@ -4,9 +4,7 @@
     <div id="coach-contact-box">
         <strong>Coach <%= @team.coach.last_name %> Contact info</strong>
         <p id="coach-info-box">
-            <%= link_to "#{@team.coach.name}", coach_path(@team.coach) %><br>
-            <%= @team.coach.email %><br>
-            <%= @team.coach.phone_number %>
+           <%= render partial: "coaches/coach", locals: {coach: @team.coach} %>
         </p>
     </div><br>
 <% else %>

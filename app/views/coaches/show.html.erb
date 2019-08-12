@@ -5,7 +5,7 @@
     <strong>Coach <%= @coach.last_name %> Contact info</strong>
     
     <% if current_user.admin? || current_user.coach? && current_user.id == @coach.id %>
-        <%= render 'coach' %>
+        <%= render partial: "coach", locals: {coach: @coach} %>
         <%= link_to "Edit", edit_coach_path(@coach) %>
     <% end %>
 </div><br>
