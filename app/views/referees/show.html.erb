@@ -6,9 +6,7 @@
     <h3> Here are your games: </h3>
     <% @ref.matches.each do |m| %>
         <div id="match-display">
-            <%= m.competition.name %><br>
-            <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %><br>
-            <%= m.location.name %><br><br>
+            <%= render partial: "ref_match_display", locals: {m: m} %>
             <%= link_to "Add Match Notes", new_referee_match_note_path(@ref) %><br>
             <% if logged_in? && current_user.admin? %>
                 <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %><br><br>
@@ -21,9 +19,7 @@
 <em>You can contact the league administratrion to request match assigments</em></h3>
     <% @unassigned_matches.each do |m| %>
         <div id="match-display">
-            <%= m.competition.name %><br>
-            <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %><br>
-            <%= m.location.name %><br><br>
+        <%= render partial: "ref_match_display", locals: {m: m} %>
             <% if logged_in? && current_user.admin? %>
                 <%= link_to "Assign this match to referee", assign_referee_match_path(@ref, m), method: :post %>
             <% end %>
