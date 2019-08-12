@@ -25,6 +25,17 @@ class RefereesController < ApplicationController
         
     end
 
+    def edit
+        @ref = Referee.find(params[:id])
+    end
+
+    def update
+        @ref = Referee.find(params[:id])
+        @ref.update(ref_params)
+        @ref.save
+        redirect_to referee_path(@ref)
+    end
+
 
 
 
