@@ -1,0 +1,11 @@
+<div id="schedule-box">
+    <h2> Schedule: </h2>
+        <% team.matches.each do |m| %>
+            <div id="match-display">
+                <%= m.teams_display %><br>
+                <%= link_to "#{m.date_and_time}", competition_match_path(m.competition.id, m) %><br>
+                <%= link_to "#{m.location.name}", location_path(m.location) %><br>
+                <%= m.location_notes %><br><br>
+            </div><br>
+        <% end %>
+</div>

@@ -10,21 +10,12 @@
 <% else %>
     <strong>Coach: <%= @team.coach.name %></strong>
 <% end %>
+
 <% if logged_in? && current_user.admin? %>
     <%= render partial: "coach_assignment", locals: {team: @team} %>
 <% end %>  
 
-<div id="schedule-box">
-    <h2> Schedule: </h2>
-        <% @team.matches.each do |m| %>
-            <div id="match-display">
-                <%= m.teams_display %><br>
-                <%= link_to "#{m.date_and_time}", competition_match_path(m.competition.id, m) %><br>
-                <%= link_to "#{m.location.name}", location_path(m.location) %><br>
-                <%= m.location_notes %><br><br>
-            </div><br>
-        <% end %>
-</div>
+<%= render partial: "match_display", locals: {team: @team} %>
 
 <h2>Roster:</h2>
 <% if @team.players.count > 0 %>
