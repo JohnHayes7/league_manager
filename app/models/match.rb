@@ -48,5 +48,9 @@ class Match < ApplicationRecord
         # referee_id: 1 is the id of "No Referee assigned to this match"
         self.where(("referee_id = 1"))
     end
+
+    def location_display
+        
+    end
     
 end
