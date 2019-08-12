@@ -11,6 +11,10 @@ class PlayersController < ApplicationController
 
     end
 
+    def new
+        @player = Player.new
+    end
+
     def edit
         @player = Player.find(params[:id])
     end
