@@ -1,16 +1,16 @@
 <h1><%= @team.name %></h1>
 <div id="coach-info">
-<% if @team.coach_id != 5 %>
-    <div id="coach-contact-box">
-        <strong>Coach <%= @team.coach.last_name %> Contact info</strong>
-        <p id="coach-info-box">
-           <%= render partial: "coaches/coach", locals: {coach: @team.coach} %>
-        </p>
-    </div><br>
-<% else %>
-    <strong>Coach: <%= @team.coach.name %></strong>
-<% end %>
-
+    <% if @team.coach_id != 5 %>
+        <div id="coach-contact-box">
+            <strong>Coach <%= @team.coach.last_name %> Contact info</strong>
+            <p id="coach-info-box">
+            <%= render partial: "coaches/coach", locals: {coach: @team.coach} %>
+            </p>
+        </div><br>
+    <% else %>
+        <strong>Coach: <%= @team.coach.name %></strong>
+    <% end %>
+</div>
 <% if logged_in? && current_user.admin? %>
     <%= render partial: "coach_assignment", locals: {team: @team} %>
 <% end %>  
@@ -19,31 +19,7 @@
 
 <h2>Roster:</h2>
 <% if @team.players.count > 0 %>
-    <table>
-        <tr>
-            <th> Player Name </th>
-            <th> Jersey Number </th>
-            <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
-                <th> Phone Number </th>
-                <th> Email </th>
-                <th></th>
-            <% end %>
-        </tr>
-            
-        <% @team.players.each do |p| %>
-            <% if p.id != nil %>
-            <tr>
-                <td><%= p.name %></td>
-                <td><%= p.jersey_number %></td>
-                <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
-                    <td><%= p.phone_number %></td>
-                    <td><%= p.email %></td>
-                    <td><%= link_to "edit", edit_team_player_path(p.team_id, p) %></td>
-                <% end %>
-            </tr>
-            <% end %>
-        <% end %>
-    </table>
+    <%= render partial: "roster_table", locals: {team: @team} %>
 <% else %>
     <h3>There are no players in this team yet</h3>
 <% end %>
