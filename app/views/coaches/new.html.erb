@@ -10,14 +10,4 @@
   </div><br>
 <% end %>
 
-<%= form_for @coach do |f| %>
-    <%= f.label "Name" %>
-    <%= f.text_field :name %><br>
-    <%= f.label "Email" %>
-    <%= f.text_field :email %><br>
-    <%= f.label "Phone Number" %>
-    <%= f.text_field :phone_number %><br>
-    <%= f.label "Password" %>
-    <%= f.password_field :password %><br>
-    <%= f.submit %>
-<% end %>
+<%= render partial: "form", locals: {coach: @coach} %>
