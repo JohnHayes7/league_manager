@@ -1,0 +1,7 @@
+<%= form_for(team) do |f| %>
+    <%= f.label "Team Name" %>
+    <%= f.text_field :name, placeholder: "Enter Team name" %><br>
+    <%= f.collection_select(:coach_id, Coach.all, :id, :name) %><br>
+    
+    <%= f.submit %>
+<% end %>
