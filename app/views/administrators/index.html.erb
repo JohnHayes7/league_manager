@@ -1,0 +1,6 @@
+<h1> League Administrators </h1>
+<ul>
+    <% @admins.each do |a| %>
+        <li><%=link_to "#{a.name}", administrator_path(a) %> - <%= link_to "Edit", edit_administrator_path(a) %></li>
+    <% end %>        
+</ul>

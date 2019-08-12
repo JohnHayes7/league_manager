@@ -11,12 +11,4 @@
 <% end %>
 
 
-<%= form_for(@admin) do |f| %>
-    <%= f.label "Name" %>
-    <%= f.text_field :name %><br>
-    <%= f.label "Email" %>
-    <%= f.text_field :email %><br>
-    <%= f.label "Password" %>
-    <%= f.password_field :password %>
-    <%= f.submit %>
-<% end %>
+<%= render partial: 'form', locals: {admin: @admin} %>

@@ -1,5 +1,8 @@
 class AdministratorsController < ApplicationController
 
+    def index
+        @admins = Administrator.all
+    end
     
     def create
        @admin = Administrator.new(admin_params)
@@ -25,6 +28,15 @@ class AdministratorsController < ApplicationController
 
     def new
         @admin = Administrator.new
+    end
+
+    def edit
+        @admin = Administrator.find(params[:id])
+        if logged_in? && current_user.admin? && current_user.id == @admin.id
+            render :edit
+        else
+            redirect_to login_path
+        end
     end
 
     private
