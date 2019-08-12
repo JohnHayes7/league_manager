@@ -3,12 +3,9 @@
 
 <div id="coach-contact-box">
     <strong>Coach <%= @coach.last_name %> Contact info</strong>
-    <p id="coach-info-box">
-        <%= @coach.name %><br>
-        <%= @coach.email %><br>
-        <%= @coach.phone_number %>
-    </p>
+    
     <% if current_user.admin? || current_user.coach? && current_user.id == @coach.id %>
+        <%= render 'coach' %>
         <%= link_to "Edit", edit_coach_path(@coach) %>
     <% end %>
 </div><br>
