@@ -8,7 +8,8 @@ class MatchesController < ApplicationController
 
     def create
         @match = Match.new(match_params)
-       if @match.teams_count_valid?(params[:match][:team_ids].count)
+        @match.competition_id = params[:competition_id]
+        if @match.teams_count_valid?(params[:match][:team_ids].count)
                 if @match.save
                         redirect_to competition_path(@match.competition_id)
                 else

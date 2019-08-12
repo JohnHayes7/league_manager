@@ -40,8 +40,7 @@ class Match < ApplicationRecord
     end
 
     def teams_count_valid?(count)
-       
-        count < 3
+        count <= 3
     end
 
     def self.unassigned
@@ -50,7 +49,7 @@ class Match < ApplicationRecord
     end
 
     def location_display
-        
+
     end
     
 end
