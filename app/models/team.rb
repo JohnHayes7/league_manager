@@ -8,7 +8,6 @@ class Team < ApplicationRecord
     accepts_nested_attributes_for :players
 
     def lose_coach
-        binding.pry
-        self. coach.teams.delete(self)
+        self.coach.teams.delete(self.id)
     end
 end
