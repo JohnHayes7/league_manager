@@ -39,6 +39,17 @@ class AdministratorsController < ApplicationController
         end
     end
 
+    def destroy
+        @admin = Administrator.find(params[:id])
+        if logged_in? && current_user.admin?
+            @admin.destroy
+
+            redirect_to administrators_path
+        else
+            redirect_to login_path
+        end
+    end
+
     private
 
     def admin_params
