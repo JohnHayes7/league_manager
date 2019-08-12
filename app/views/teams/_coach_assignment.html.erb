@@ -1,0 +1,5 @@
+<%= form_for team, url: {action: 'update'}  do |f| %>
+    <%= f.label "Assign or change coach" %>
+    <%= f.collection_select(:coach_id, Coach.all, :id, :name) %><br>
+    <%= f.submit %>
+<% end %> 

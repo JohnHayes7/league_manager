@@ -11,7 +11,7 @@
         </p>
    
 
-    <p>
+    <div id="ref-info">
         <strong>Referee:</strong>
         <%= @match.referee.name %><br>
         <strong>Match Notes: </strong>
@@ -22,7 +22,7 @@
                 <%= note.content %>
             <% end %>
         <% end %>
-    </p>
+    </div>
     <%= link_to "Back to Competition", competition_path(@match.competition_id) %>
 </div>
 
