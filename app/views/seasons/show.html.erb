@@ -1,20 +1,8 @@
 <h1>The <%= @season.year %> Season</h1>
 
 <div class="col-2-wide">
-    <% if current_user.admin? %>
-    <h2>Administrator Options:</h2>
-        <h4>Add competition to this season:</h4>
-        <%= form_for @season, url: {action: 'update'} do |f| %>
-            <%= f.collection_check_boxes(:competition_ids, Competition.all, :id, :name) %>
-            <%= f.submit %>
-        <% end %>
-        <br><br>
-        <%= link_to "Create a new competition to this season", new_season_competition_path(@season) %>
-        <br><br>
-        <%= form_for @season, method: :delete do |f| %>
-            <%= f.submit "Delete Season" %>
-        <% end %>
-
+    <% if logged_in? && current_user.admin? %>
+        <%= render partial: "admin_options", locals: {season: @season} %>
     <% end %>
 </div>
 
