@@ -27,8 +27,11 @@ class PlayersController < ApplicationController
     end
 
     def destroy
-        @player = Player.find(params[:id])
         
+        @player = Player.find(params[:id])
+        @player.destroy
+
+        redirect_to team_path(params[:team_id])
     end
 
     private
