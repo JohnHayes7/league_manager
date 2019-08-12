@@ -14,9 +14,12 @@
     <strong>You Currently Don't Have Any Teams</strong><br>
     <strong>Please contact league administrator to have teams assigned</strong>
 <% else %>
-    <% @coach.teams.each do |t| %>
-        <%= t.name %>
-    <% end %>
+    <strong>Coach <%= @coach.last_name %>, Coaches These Teams </strong %><br>
+    <ul>
+        <% @coach.teams.each do |t| %>
+            <li><%= link_to "#{t.name}", team_path(t) %><br></li>
+        <% end %>
+    </ul>
 <% end %>
 
         
