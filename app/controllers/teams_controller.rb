@@ -4,8 +4,9 @@ class TeamsController < ApplicationController
     end
 
     def create
-        team = Team.new(team_params)
-        if team.save
+        @team = Team.new(team_params)
+        binding.pry
+        if @team.save
             redirect_to teams_path
         else
             render :new
@@ -40,6 +41,6 @@ class TeamsController < ApplicationController
     private
     
     def team_params
-        params.require(:team).permit(:name, :coach)
+        params.require(:team).permit(:name, :coach_id)
     end
 end

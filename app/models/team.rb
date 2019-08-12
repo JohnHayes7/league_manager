@@ -9,5 +9,6 @@ class Team < ApplicationRecord
 
     def lose_coach
         binding.pry
+        self. coach.teams.delete(self)
     end
 end
