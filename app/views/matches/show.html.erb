@@ -7,11 +7,7 @@
         <p>
             <%= link_to "#{@match.competition.name}", competition_path(@match.competition) %><br>
             <%= @match.date %> <%= @match.time %><br>
-            <%= link_to "#{@match.location.name}", location_path(@match.location) %><br>
-            <%= @match.location.street_address %><br>
-            <%= @match.location.city %><br>
-            <%= @match.location.state %>
-            <%= @match.location.zip_code %>
+            <%= render partial: "locations/location", locals: {location: @match.location} %>
         </p>
    
 

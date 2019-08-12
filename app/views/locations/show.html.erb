@@ -1,8 +1,5 @@
 <div id="location-show-info">
-    <strong><%= @location.name %></strong><br>
-    <%= @location.street_address %><br>
-    <%= @location.city %>, <%= @location.state %><br>
-    <%= @location.zip_code %>
+    <%= render partial: "location", locals: {location: @location} %>
 </div>
 
 <h3>These Matches took place at this location:</h3>
