@@ -1,4 +1,4 @@
 <h1>New Match Note</h1>
 <%= form_for @note, url: {action: 'create'}  do |f| %>
-    <%= render "fields" %>
+    <%= render partial: "fields", locals: {f: f} %>
 <% end %>   

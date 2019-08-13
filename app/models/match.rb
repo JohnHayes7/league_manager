@@ -51,5 +51,13 @@ class Match < ApplicationRecord
     def location_display
 
     end
+
+    def belongs_to_ref
+        self.referee.matches.include?(self)
+    end
+
+    def notes_exist?
+        !self.referee.match_notes.empty?
+    end
     
 end

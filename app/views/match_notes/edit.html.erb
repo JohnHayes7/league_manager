@@ -1,0 +1,5 @@
+<h1>Edit Match Note</h1>
+
+<%= form_for @note, url: {action: 'update'}  do |f| %>
+    <%= render partial: "fields", locals: {f: f} %>
+<% end %>

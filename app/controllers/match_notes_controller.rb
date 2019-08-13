@@ -16,6 +16,11 @@ class MatchNotesController < ApplicationController
         end
     end
 
+    def edit
+        raise params.inspect
+        @note = MatchNote.find(params[:id])
+    end
+
     private
 
     def match_note_params
