@@ -28,14 +28,23 @@ class MatchNotesController < ApplicationController
     end
 
     def update
+        raise params.inspect
         @match = Match.find(params[:match_id])
         @note = MatchNote.find(params[:id])
+
         @note.update(match_note_params)
         @note.save
 
         redirect_to competition_match_path(@match.competition_id, @match)
     end
     
+    def team_goals
+        
+    end
+
+    def team_results
+
+    end
 
     private
 
