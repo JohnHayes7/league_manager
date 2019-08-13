@@ -66,7 +66,7 @@ class MatchesController < ApplicationController
     end
 
     def team_goals
-
+        
     end
 
     def team_results

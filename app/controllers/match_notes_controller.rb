@@ -18,7 +18,6 @@ class MatchNotesController < ApplicationController
 
     def edit
         @match = Match.find(params[:match_id])
-        
         @comp = Competition.find(@match.competition_id)
         if ref_logged_in? && @match.belongs_to_ref
             @note = MatchNote.find(params[:id])
