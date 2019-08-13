@@ -1,0 +1,5 @@
+<div id="match-display">
+    <strong><%= link_to "#{m.teams[0].name} vs #{m.teams[1].name}", competition_match_path(m.competition_id, m) %></strong><br>
+    <%= m.competition.name %>
+    <%= m.date %> <%= m.time %>
+</div><br>

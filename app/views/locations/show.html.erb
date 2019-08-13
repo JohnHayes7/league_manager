@@ -2,12 +2,15 @@
     <%= render partial: "location", locals: {location: @location} %>
 </div>
 
-<h3>These Matches took place at this location:</h3>
-
-<% @location.matches.each do |m| %>
-    <div id="match-display">
-    <strong><%= link_to "#{m.teams[0].name} vs #{m.teams[1].name}", competition_match_path(m.competition_id, m) %></strong><br>
-    <%= m.competition.name %>
-    <%= m.date %> <%= m.time %>
-    </div><br>
+<% if @location.has_matches? %>
+    <h3>Upcoming Matches at this location</h3>
+        <% @location.upcoming_matches.each do |m| %>
+            <%= render partial: "match_display", locals: {m: m} %>
+         <% end %>
+    <h3>These Matches took place at this location:</h3>
+        <% @location.past_matches.each do |m| %>
+            <%= render partial: "match_display", locals: {m: m} %>
+        <% end %>
+<% else %>
+    <h3> There Are no matches for <%= @location.name %></h3>
 <% end %>
