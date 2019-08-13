@@ -24,6 +24,7 @@ class AdministratorsController < ApplicationController
             @seasons = Season.all
             @referees = Referee.all
         else
+            flash[:error] = "You must be an administrator to continue"
             redirect_to login_path
         end
         
@@ -33,6 +34,7 @@ class AdministratorsController < ApplicationController
         if admin_logged_in?
             @admin = Administrator.new
         else
+            flash[:error] = "You must be an administrator to continue"
             redirect_to login_path
         end
     end
@@ -42,6 +44,7 @@ class AdministratorsController < ApplicationController
         if admin_logged_in? && current_user.id == @admin.id
             render :edit
         else
+            flash[:error] = "You must be an administrator.  You can only edit your own information"
             redirect_to login_path
         end
     end
@@ -53,6 +56,7 @@ class AdministratorsController < ApplicationController
 
             redirect_to administrators_path
         else
+            flash[:error] = "You must be an administrator to continue"
             redirect_to login_path
         end
     end
