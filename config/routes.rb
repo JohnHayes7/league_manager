@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   
   resources :competitions, only:[:show, :index, :edit, :update] do
     resources :matches, only:[:new, :create, :show, :edit, :update, :destroy] do
-      post :team_goals
-      post :team_results
+      member do
+        post :team_goals
+        post :team_results
+      end
     end
   end
 

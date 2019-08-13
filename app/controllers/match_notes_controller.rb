@@ -18,6 +18,8 @@ class MatchNotesController < ApplicationController
 
     def edit
         @match = Match.find(params[:match_id])
+        
+        @comp = Competition.find(@match.competition_id)
         if ref_logged_in? && @match.belongs_to_ref
             @note = MatchNote.find(params[:id])
             @ref = Referee.find(params[:referee_id])
@@ -34,6 +36,7 @@ class MatchNotesController < ApplicationController
 
         redirect_to competition_match_path(@match.competition_id, @match)
     end
+    
 
     private
 
