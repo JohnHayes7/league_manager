@@ -19,6 +19,18 @@ class Team < ApplicationRecord
         self.matches.where("date >= ?", Time.zone.today)
     end
 
+    def wins
+        Match.where("winner_id == #{self.id}").count
+    end
+
+    def losses
+        Match.where("loser_id == #{self.id}").count
+    end
+
+    def draws
+        Match.where("draw_team_1 = #{self.id}").count + Match.where("draw_team_2 = #{self.id}").count
+    end
+
     def record 
         "W: #{self.wins} - L: #{self.losses} - D: #{self.draws}"
     end
