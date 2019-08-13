@@ -23,6 +23,11 @@
     <%= link_to "Log Out", logout_path, method: "delete" %></header>
     <% end %>
   </header>
+  <% flash.each do |key, value| %>
+    <div id="error_explanation">
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    </div>
+  <% end %>
     <%= yield %>
   </body>
   

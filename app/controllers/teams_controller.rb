@@ -1,6 +1,11 @@
 class TeamsController < ApplicationController
     def new
-        @team = Team.new
+        if admin_logged_in?
+            @team = Team.new
+        else
+            flash[:error] = "You must be logged in to create a new team"
+            redirect_to login_path
+        end
     end
 
     def create

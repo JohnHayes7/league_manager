@@ -9,5 +9,6 @@
         <% end %>
     </ul>
 <% end %> 
-
-<%= link_to "Create a New Team", new_team_path %>
+<% if admin_logged_in? %>
+    <%= link_to "Create a New Team", new_team_path %>
+<% end %>

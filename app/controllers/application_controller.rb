@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     include MatchesHelper
 
+
     helper_method :ref_logged_in?
     helper_method :coach_logged_in?
     helper_method :admin_logged_in?
