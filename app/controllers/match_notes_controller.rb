@@ -17,8 +17,22 @@ class MatchNotesController < ApplicationController
     end
 
     def edit
-        raise params.inspect
+        @match = Match.find(params[:match_id])
+        if ref_logged_in? && @match.belongs_to_ref
+            @note = MatchNote.find(params[:id])
+            @ref = Referee.find(params[:referee_id])
+        else
+            redirect_to competition_match_path(@match.competition_id, @match)
+        end
+    end
+
+    def update
+        @match = Match.find(params[:match_id])
         @note = MatchNote.find(params[:id])
+        @note.update(match_note_params)
+        @note.save
+
+        redirect_to competition_match_path(@match.competition_id, @match)
     end
 
     private

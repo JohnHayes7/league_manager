@@ -26,7 +26,7 @@ Rails.application.routes.draw do
         post :assign
         post :unassign
       end
-      resources :match_notes, only:[:new, :create, :edit, :destroy]
+      resources :match_notes, only:[:new, :create, :edit, :update, :destroy]
     end
   end
 

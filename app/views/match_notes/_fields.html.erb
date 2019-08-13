@@ -1,5 +1,5 @@
 <%= f.label "Select A Match" %>
 <%= f.collection_select(:match_id, @ref.matches, :id, :date_and_time) %><br>
 <%= f.label "Please add notes below:" %><br>
-<%= f.text_area :content, :size => "50 x 10" %>
+<%= f.text_area :content, :size => "50 x 10" %><br>
 <%= f.submit %>
