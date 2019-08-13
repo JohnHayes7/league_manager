@@ -1,7 +1,11 @@
 class CoachesController < ApplicationController
 
     def new
-        @coach = Coach.new
+        if admin_logged_in?
+            @coach = Coach.new
+        else
+            redirect_to login_path
+        end
     end
 
     def create
@@ -19,14 +23,17 @@ class CoachesController < ApplicationController
             @coach = Coach.find(params[:id])
             @unassigned_teams = Team.where("coach_id == 5")
         else
+            flash[:error] = "You Must be logged in to continue"
             redirect_to login_path 
             
         end  
     end
 
     def edit
-        @coach = Coach.find(params[:id])
-        if !logged_in? && current_user.coach? && current_user.id == @coach.id || !logged_in? && current_user.admin?
+        if coach_logged_in?? && current_user.id == @coach.id || admin_logged_in?
+            @coach = Coach.find(params[:id])
+        else
+            flash[:error] = "Coaches can only edit their own infomation.  Or you must be logged in as an administrator"
             redirect_to coach_path(@coach)
         end 
     end

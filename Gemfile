@@ -35,6 +35,8 @@ gem 'dotenv-rails'
 
 gem 'omniauth-google-oauth2'
 
+gem 'rack-flash3'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
