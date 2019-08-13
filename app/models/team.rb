@@ -19,5 +19,9 @@ class Team < ApplicationRecord
         self.matches.where("date >= ?", Time.zone.today)
     end
 
+    def record 
+        "W: #{self.wins} - L: #{self.losses} - D: #{self.draws}
+    end
+
 
 end
