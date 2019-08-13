@@ -5,13 +5,15 @@ class AdministratorsController < ApplicationController
     end
     
     def create
-       @admin = Administrator.new(admin_params)
-       if @admin.save
+        if admin_logged_in?
+            @admin = Administrator.new(admin_params)
+            if @admin.save
 
-          redirect_to administrator_path(@admin)
-       else
-          render :new
-       end
+                redirect_to administrator_path(@admin)
+            else
+                render :new
+            end
+        end
     end
 
     def show
@@ -28,7 +30,11 @@ class AdministratorsController < ApplicationController
     end
 
     def new
-        @admin = Administrator.new
+        if admin_logged_in?
+            @admin = Administrator.new
+        else
+            redirect_to login_path
+        end
     end
 
     def edit
