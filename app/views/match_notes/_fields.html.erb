@@ -1,4 +1,8 @@
-<strong>Input or Update Score</strong>
+<strong>Input or Update Score</strong><br>
+<%= f.label "#{@match.teams[0].name} goals:" %>
+<%= f.number_field :team_1_goals %>
+<%= f.label "#{@match.teams[1].name} goals:" %>
+<%= f.number_field :team_2_goals %><br>
 <%= f.label "Select A Match" %>
 <%= f.collection_select(:match_id, @ref.matches, :id, :date_and_time) %><br>
 <%= f.label "Please add notes below:" %><br>
