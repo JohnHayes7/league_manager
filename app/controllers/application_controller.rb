@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+    include MatchesHelper
 
     helper_method :ref_logged_in?
     helper_method :coach_logged_in?
     helper_method :admin_logged_in?
+    helper_method :homepage
 
     def current_user
         if session[:admin_id]
@@ -53,4 +55,10 @@ class ApplicationController < ActionController::Base
     def ref_logged_in?
         logged_in? && current_user.referee?
     end
+
+    def homepage
+       
+    end
+
+
 end

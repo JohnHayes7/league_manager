@@ -1,4 +1,5 @@
 class MatchesController < ApplicationController
+    include MatchesHelper
 
     def new
         @comp = Competition.find(params[:competition_id])

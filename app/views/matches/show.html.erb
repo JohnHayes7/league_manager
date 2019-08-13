@@ -29,7 +29,18 @@
             <% end %>
         <% end %>
     </div>
-    <%= link_to "Back to Competition", competition_path(@match.competition_id) %>
 </div>
+
+<% if ref_logged_in? %>
+    <%= link_to "Homepage", referee_path(current_user.id) %><br>
+<% elsif admin_logged_in? %>
+    <%= link_to "Homepage", administrator_path(current_user.id) %><br>
+<% elsif coach_logged_in? %>
+    <%= link_to "Homepage", coach_path(current_user.id) %><br>
+<% end %>
+
+<%= link_to "Back to Competition", competition_path(@match.competition_id) %><br>
+<%= link_to "Go to Seasons", seasons_path %>
+
 
 
