@@ -3,6 +3,7 @@ class MatchNotesController < ApplicationController
     def new
         @note = MatchNote.new
         @ref = Referee.find(params[:referee_id])
+        @match = Match.find(params[:match_id])
     end
 
     def create

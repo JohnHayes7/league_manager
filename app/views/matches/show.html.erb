@@ -9,7 +9,7 @@
         
         <% if !@match.notes_exist? %>
             <strong>The Referee will add match notes. <br> Please contact league administrator if you have any questions</strong>
-            <% if ref_logged_in? && @match.belongs_to_ref %>
+            <% if ref_logged_in? && belongs_to_ref(@match) %>
                 <%= link_to "Add Match Notes", new_referee_match_match_note_path(@match.referee.id, @match) %><br> 
             <% end %>    
         <% else %>

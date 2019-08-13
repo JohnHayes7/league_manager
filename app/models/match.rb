@@ -49,7 +49,7 @@ class Match < ApplicationRecord
     end
 
     def belongs_to_ref
-        self.referee.matches.include?(self)
+        self.referee.matches.include?(referee)
     end
 
     def notes_exist?

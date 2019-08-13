@@ -61,5 +61,9 @@ class ApplicationController < ActionController::Base
        
     end
 
+    def belongs_to_ref
+        self.referee.matches.include?(current_user)
+    end
+
 
 end
