@@ -65,6 +65,14 @@ class MatchesController < ApplicationController
         redirect_to referee_path(origin_ref_id)
     end
 
+    def team_goals
+
+    end
+
+    def team_results
+
+    end
+
     private
 
     def match_params
