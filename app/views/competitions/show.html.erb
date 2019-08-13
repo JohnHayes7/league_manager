@@ -1,11 +1,16 @@
 <h1>The <%=@comp.season.year %> - <%= @comp.name %> </h1>
 <br>
 <div class="col-2-wide">
-    <% if logged_in? && current_user.admin? %>
+    <% if admin_logged_in? %>
         <div id="admin-options">
                 <h3><%= link_to "Create & Add Matches to this Competition", new_competition_match_path(@comp) %></h3>
                 <h3><%= link_to "Edit this Competition", edit_competition_path %></h3>
         </div>
+    <% end %>
+
+    <h3>All Seasons</h3>
+    <% @seasons.each do |s| %>
+        <%= link_to "#{s.year}", season_path(s) %><br>
     <% end %>
 </div>
     <% @comp.matches.each do |m| %>
@@ -14,7 +19,7 @@
             <%= m.teams_display %><br>
             <strong> Location:</strong><%= link_to m.location.name, location_path(m.location) %> <br><strong>Notes:</strong><%= m.location_notes %><br><br>
             
-            <% if logged_in? && current_user.admin? %>
+            <% if admin_logged_in? %>
                 <%= link_to "Edit This Match", edit_competition_match_path(m.competition_id, m) %>
                 <%= link_to "Delete Match", competition_match_path(m.competition_id, m.id), :confirm => "Are you sure you want to delete match?", :method => :delete %>            
             <% end %>

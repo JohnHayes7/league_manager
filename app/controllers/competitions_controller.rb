@@ -12,7 +12,7 @@ class CompetitionsController < ApplicationController
 
     def show 
         @comp = Competition.find(params[:id])
-        
+        @seasons = Season.all
     end
 
     def new
