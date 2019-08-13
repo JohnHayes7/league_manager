@@ -58,10 +58,16 @@ class Match < ApplicationRecord
 
     def result
         if self.matchgoals_1 > self.matchgoals_2
+            self.winner_id = self.teams[0].id
+            self.loser_id = self.teams[1].id
             "Result: #{self.teams[0].name} Win #{self.matchgoals_1} - #{self.matchgoals_2}"
         elsif self.matchgoals_1 < self.matchgoals_2
+            self.winner_id = self.teams[1].id
+            self.loser_id = self.teams[0].id
             "Result: #{self.teams[1].name} Win #{self.matchgoals_1} - #{self.matchgoals_2}"
         else  
+            self.draw_team_1 = self.teams[0].id
+            self.draw_team_2 = self.teams[1].id
             "Result: Draw #{self.matchgoals_1} - #{self.matchgoals_2}"
         end
     end
