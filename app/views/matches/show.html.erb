@@ -15,22 +15,20 @@
         <strong>Referee:</strong>
         <%= @match.referee.name %><br>
         <strong>Match Notes: </strong>
-        <% if @match.referee.match_notes.empty? %>
+        <% if !@match.notes_exist? %>
             <strong>The Referee will add match notes. <br> Please contact league administrator if you have any questions</strong>
+            <% if ref_logged_in? && @match.belongs_to_ref %>
+                <%= link_to "Add Match Notes", new_referee_match_match_note_path(@match.referee.id, @match) %><br> 
+            <% end %>    
         <% else %>
             <% @match.referee.match_notes.each do |note| %>
-                <%= note.content %>
+                <%= note.content %><br>
+                <% if ref_logged_in? && @match.belongs_to_ref %>
+                    <%= link_to "Edit Match Notes", edit_referee_match_match_note_path(@match.referee, @match, note) %><br>
+                <% end %>
             <% end %>
         <% end %>
     </div>
-    
-    <% if ref_logged_in? && @match.belongs_to_ref %>
-        <% if @match.notes_exist? %>
-            <%= link_to "Edit Match Notes", edit_referee_match_note_path(@match.referee) %><br>
-        <% else %>
-            <%= link_to "Add Match Notes", new_referee_match_note_path(@match.referee) %><br> 
-        <% end %>
-    <% end %>
     <%= link_to "Back to Competition", competition_path(@match.competition_id) %>
 </div>
 

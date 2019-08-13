@@ -26,8 +26,8 @@ Rails.application.routes.draw do
         post :assign
         post :unassign
       end
+      resources :match_notes, only:[:new, :create, :edit, :destroy]
     end
-    resources :match_notes, only:[:new, :create, :edit, :destroy]
   end
 
   resources :coaches 

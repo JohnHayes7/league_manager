@@ -7,7 +7,7 @@
     <% @ref.matches.each do |m| %>
         <div id="match-display">
             <%= render partial: "ref_match_display", locals: {m: m} %>
-            <%= link_to "Add Match Notes", new_referee_match_note_path(@ref) %><br>
+            <%= link_to "Add Match Notes", new_referee_match_match_note_path(@ref, m) %><br>
             <% if logged_in? && current_user.admin? %>
                 <%= link_to "Unassign this match", unassign_referee_match_path(@ref, m), method: :post %><br><br>
             <% end %>
