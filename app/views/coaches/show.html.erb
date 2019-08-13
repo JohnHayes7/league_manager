@@ -1,25 +1,32 @@
 <h1>Coach <%= @coach.last_name %> Page</h1>
 
-
-<div id="coach-contact-box">
-    <strong>Coach <%= @coach.last_name %> Contact info</strong>
-    
-    <% if current_user.admin? || current_user.coach? && current_user.id == @coach.id %>
-        <%= render partial: "coach", locals: {coach: @coach} %>
-        <%= link_to "Edit", edit_coach_path(@coach) %>
+<div class="col-2-wide">
+<h3>Teams without Coaches:</h3>
+    <% @unassigned_teams.each do |t| %>
+        <%= link_to "#{t.name}", team_path(t) %><br>
     <% end %>
-</div><br>
+</div>
 
-<% if @coach.teams.empty? %>
-    <strong>You Currently Don't Have Any Teams</strong><br>
-    <strong>Please contact league administrator to have teams assigned</strong>
-<% else %>
-    <strong>Coach <%= @coach.last_name %>, Coaches These Teams </strong %><br>
-    <ul>
-        <% @coach.teams.each do |t| %>
-            <li><%= link_to "#{t.name}", team_path(t) %><br></li>
+<div class="col-1-narrow">
+   
+        <strong>Coach <%= @coach.last_name %> Contact info</strong>
+        
+        <% if current_user.admin? || current_user.coach? && current_user.id == @coach.id %>
+            <%= render partial: "coach", locals: {coach: @coach} %>
+            <%= link_to "Edit", edit_coach_path(@coach) %><br>
         <% end %>
-    </ul>
-<% end %>
+
+    <% if @coach.teams.empty? %>
+        <strong>You Currently Don't Have Any Teams</strong><br>
+        <strong>Please contact league administrator to have teams assigned</strong>
+    <% else %>
+        <strong>Coach <%= @coach.last_name %>, Coaches These Teams </strong %><br>
+        <ul>
+            <% @coach.teams.each do |t| %>
+                <li><%= link_to "#{t.name}", team_path(t) %><br></li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>
 
         

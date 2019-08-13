@@ -17,6 +17,7 @@ class CoachesController < ApplicationController
     def show
         if coach_logged_in? || admin_logged_in?
             @coach = Coach.find(params[:id])
+            @unassigned_teams = Team.where("coach_id == 5")
         else
             redirect_to login_path 
             
