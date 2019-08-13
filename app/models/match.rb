@@ -69,5 +69,11 @@ class Match < ApplicationRecord
             "Result: Draw #{self.matchgoals_1} - #{self.matchgoals_2}"
         end
     end
+
+    def goals_update(params)
+        self.matchgoals_1 = params[:match_note][:team_1_goals]
+        self.matchgoals_2 = params[:match_note][:team_2_goals]
+        self.save
+    end
     
 end

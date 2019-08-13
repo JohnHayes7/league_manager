@@ -10,6 +10,8 @@ class MatchNotesController < ApplicationController
         note = MatchNote.new(match_note_params)
         note.referee_id = params[:referee_id]
         match = Match.find(params[:match_note][:match_id])
+        match.goals_update(params)
+        
         if note.save
 
             redirect_to competition_match_path(match.competition_id, match)
@@ -31,9 +33,8 @@ class MatchNotesController < ApplicationController
         
         @match = Match.find(params[:match_id])
         @note = MatchNote.find(params[:id])
-        @match.matchgoals_1 = params[:match_note][:team_1_goals]
-        @match.matchgoals_2 = params[:match_note][:team_2_goals]
-        @match.save
+        @match.goals_update(params)
+       
         @note.update(match_note_params)
         @note.save
 
