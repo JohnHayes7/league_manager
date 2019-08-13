@@ -10,9 +10,19 @@
   </head>
 
   <body>
-  <% if logged_in? %>
-  <header><%= link_to "Log Out", logout_path, method: "delete" %></header>
-  <% end %>
+  
+  <header>
+    <% if logged_in? %>
+      <% if admin_logged_in? %>
+        <%= link_to "Homepage", administrator_path(current_user.id) %>
+      <% elsif ref_logged_in? %>
+        <%= link_to "Homepage", referee_path(current_user.id) %>
+      <% elsif coach_logged_in? %>
+        <%= link_to "Homepage", coach_path(current_user.id) %>
+      <% end %>
+    <%= link_to "Log Out", logout_path, method: "delete" %></header>
+    <% end %>
+  </header>
     <%= yield %>
   </body>
   

@@ -15,7 +15,7 @@ class SeasonsController < ApplicationController
 
     def show
         @season = Season.find_by(:id => params[:id])
-
+        @seasons = Season.all
     end
 
     def edit

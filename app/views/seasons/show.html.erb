@@ -1,8 +1,13 @@
 <h1>The <%= @season.year %> Season</h1>
 
 <div class="col-2-wide">
-    <% if logged_in? && current_user.admin? %>
+    <% if admin_logged_in? %>
         <%= render partial: "admin_options", locals: {season: @season} %>
+    <% end %>
+
+    <h3>All Seasons</h3>
+    <% @seasons.each do |s| %>
+        <%= link_to "#{s.year}", season_path(s) %><br>
     <% end %>
 </div>
 
