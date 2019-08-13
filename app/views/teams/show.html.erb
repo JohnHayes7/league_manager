@@ -16,8 +16,8 @@
 <% end %>  
 
 <div id="record-display">
-    <h3>Competition Record:</h3>
-    <h3>Competition Stats:</h3>
+    <h3>Competition Record: <%= @team.record %></h3>
+    <h3>Competition Stats: <%= @team.stats %></h3>
 </div>
 
 <%= render partial: "schedule", locals: {team: @team} %>

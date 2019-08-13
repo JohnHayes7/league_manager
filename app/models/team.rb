@@ -20,7 +20,11 @@ class Team < ApplicationRecord
     end
 
     def record 
-        "W: #{self.wins} - L: #{self.losses} - D: #{self.draws}
+        "W: #{self.wins} - L: #{self.losses} - D: #{self.draws}"
+    end
+
+    def stats
+        "GF: #{self.goals_for} GA: #{self.goals_against}"
     end
 
 
