@@ -9,6 +9,16 @@
                 <% end %>
             <% end %>
     </div><br>
+    
+    <div id="admin-coach-contact-box">
+        <h3>Referee Contact List:</h3>
+                <% @referees.each do |r| %>
+                    <% if r.id != 1 %>
+                        <%= link_to "#{r.name}", referee_path(r) %> - <%= r.email %> - <%= r.phone %><br>
+                    <% end %>
+                <% end %>
+    </div><br>
+
 </div>
 
 <div class="col-2-wide">

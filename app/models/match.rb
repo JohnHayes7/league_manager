@@ -48,10 +48,6 @@ class Match < ApplicationRecord
         self.where(("referee_id = 1"))
     end
 
-    def location_display
-
-    end
-
     def belongs_to_ref
         self.referee.matches.include?(self)
     end
@@ -65,7 +61,7 @@ class Match < ApplicationRecord
             "Result: #{self.teams[0].name} Win #{self.matchgoals_1} - #{self.matchgoals_2}"
         elsif self.matchgoals_1 < self.matchgoals_2
             "Result: #{self.teams[1].name} Win #{self.matchgoals_1} - #{self.matchgoals_2}"
-        else
+        else  
             "Result: Draw #{self.matchgoals_1} - #{self.matchgoals_2}"
         end
     end

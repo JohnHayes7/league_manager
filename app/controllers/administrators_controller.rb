@@ -20,6 +20,7 @@ class AdministratorsController < ApplicationController
             @teams = Team.all
             @coaches = Coach.all
             @seasons = Season.all
+            @referees = Referee.all
         else
             redirect_to login_path
         end
