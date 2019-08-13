@@ -23,6 +23,14 @@
             <% end %>
         <% end %>
     </div>
+    
+    <% if ref_logged_in? && @match.referee.matches.include?(@match) %>
+        <% if @match.referee.match_notes.empty? %>
+            <%= link_to "Add Match Notes", new_referee_match_note_path(@match.referee) %><br>
+        <% else %>
+            <%= link_to "Edit Match Notes", edit_referee_match_note_path(@match.referee) %><br>
+        <% end %>
+    <% end %>
     <%= link_to "Back to Competition", competition_path(@match.competition_id) %>
 </div>
 
