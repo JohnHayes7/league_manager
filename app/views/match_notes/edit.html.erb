@@ -1,5 +1,7 @@
 <h1>Edit Match Note</h1>
+<%= form_for @match, url:{action: 'team_goals'} do |f| %>
 
+<% end %>
 <%= form_for @note, url: {action: 'update'}  do |f| %>
     <%= render partial: "fields", locals: {f: f} %>
 <% end %>

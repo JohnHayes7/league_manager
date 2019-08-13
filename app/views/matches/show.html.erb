@@ -15,8 +15,7 @@
         <% else %>
             <% @match.referee.match_notes.each do |note| %>
                 <h4>Score: </h4>
-                <h4>Referee:
-                <%= @match.referee.name %><br></h4>
+                <h4>Referee: <%= @match.referee.name %><br></h4>
                 <strong>Match Notes: </strong>
                 <%= note.content %><br>
                 <% if ref_logged_in? && @match.belongs_to_ref %>
