@@ -28,10 +28,12 @@ class MatchNotesController < ApplicationController
     end
 
     def update
-        raise params.inspect
+        
         @match = Match.find(params[:match_id])
         @note = MatchNote.find(params[:id])
-
+        @match.matchgoals_1 = params[:match_note][:team_1_goals]
+        @match.matchgoals_2 = params[:match_note][:team_2_goals]
+        @match.save
         @note.update(match_note_params)
         @note.save
 
