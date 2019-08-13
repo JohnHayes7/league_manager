@@ -41,4 +41,8 @@ class ApplicationController < ActionController::Base
     def admin_logged_in?
         logged_in? && current_user.admin?
     end
+
+    def coach_logged_in?
+        logged_in? && current_user.coach?
+    end
 end
