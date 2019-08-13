@@ -15,7 +15,7 @@ class AdministratorsController < ApplicationController
     end
 
     def show
-        if logged_in? && current_user.admin?
+        if admin_logged_in?
             @admin = Administrator.find_by(:id => params[:id])
             @teams = Team.all
             @coaches = Coach.all
@@ -32,7 +32,7 @@ class AdministratorsController < ApplicationController
 
     def edit
         @admin = Administrator.find(params[:id])
-        if logged_in? && current_user.admin? && current_user.id == @admin.id
+        if admin_logged_in? && current_user.id == @admin.id
             render :edit
         else
             redirect_to login_path
@@ -41,7 +41,7 @@ class AdministratorsController < ApplicationController
 
     def destroy
         @admin = Administrator.find(params[:id])
-        if logged_in? && current_user.admin?
+        if admin_logged_in?
             @admin.destroy
 
             redirect_to administrators_path

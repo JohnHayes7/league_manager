@@ -37,4 +37,8 @@ class ApplicationController < ActionController::Base
     def find_user_type(params)
         Administrator.find_by(email: params[:session][:email]) || @user = Referee.find_by(email: params[:session][:email]) || @user = Coach.find_by(email: params[:session][:email])
     end
+
+    def admin_logged_in?
+        logged_in? && current_user.admin?
+    end
 end
