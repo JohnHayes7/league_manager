@@ -59,5 +59,15 @@ class Match < ApplicationRecord
     def notes_exist?
         !self.referee.match_notes.empty?
     end
+
+    def result
+        if self.matchgoals_1 > self.matchgoals_2
+            "Result: #{self.teams[0].name} Win #{self.matchgoals_1} - #{self.matchgoals_2}"
+        elsif self.matchgoals_1 < self.matchgoals_2
+            "Result: #{self.teams[1].name} Win #{self.matchgoals_1} - #{self.matchgoals_2}"
+        else
+            "Result: Draw #{self.matchgoals_1} - #{self.matchgoals_2}"
+        end
+    end
     
 end

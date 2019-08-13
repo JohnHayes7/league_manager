@@ -14,13 +14,7 @@
             <% end %>    
         <% else %>
             <% @match.referee.match_notes.each do |note| %>
-                <% if @match.matchgoals_1 > @match.matchgoals_2 %>
-                    <h4>Result: <%= @match.teams[0].name %> Wins <%= @match.matchgoals_1 %> - <%= @match.matchgoals_2 %></h4>
-                <% elsif @match.matchgoals_1 < @match.matchgoals_2 %>
-                    <h4>Result: <%= @match.teams[1].name %> Win <%= @match.matchgoals_1 %> - <%= @match.matchgoals_2 %></h4>
-                <% else %>
-                    <h4> Result: Draw <%= @match.matchgoals_1 %> - <%= @match.matchgoals_2 %></h4>
-                <% end %>
+                <h4><%= @match.result %>
                 <h4>Referee: <%= @match.referee.name %><br></h4>
                 <strong>Match Notes: </strong>
                 <%= note.content %><br>
