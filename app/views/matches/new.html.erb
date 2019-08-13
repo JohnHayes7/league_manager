@@ -15,16 +15,7 @@
         <div style="margin-left: 40px">
         <strong> or create a new location:</strong><br>
             <%= f.fields_for :location do |location| %>
-                <%= location.label :name %>
-                <%= location.text_field :name %><br>
-                <%= location.label :street_address %>
-                <%= location.text_field :street_address %><br>
-                <%= location.label :city %>
-                <%= location.text_field :city %><br>
-                <%= location.label :state %>
-                <%= location.text_field :state %><br>
-                <%= location.label :zip_code %>
-                <%= location.text_field :zip_code %>
+                <%= render partial: "locations/fields", locals: {f: location} %>
             <% end %>
         </div><br>
     <%= f.label "Location Notes:" %><br>
