@@ -2,8 +2,13 @@ class MatchesController < ApplicationController
     include MatchesHelper
 
     def new
-        @comp = Competition.find(params[:competition_id])
-        @match = @comp.matches.build
+        if admin_logged_in?
+            @comp = Competition.find(params[:competition_id])
+            @match = @comp.matches.build
+        else
+            flash[:error] = "You must be logged in as an Administrator to create a new match"
+            redirect_to login_path
+        end
         
     end
 
@@ -29,7 +34,12 @@ class MatchesController < ApplicationController
     end
 
     def edit
-        @match = Match.find(params[:id])
+        if admin_logged_in?
+            @match = Match.find(params[:id])
+        else
+            flash[:error] = "You must be logged in as an Administrator to create a new match"
+            redirect_to login_path
+        end
     end
 
     def update
@@ -50,7 +60,7 @@ class MatchesController < ApplicationController
         end
     end
 
-    def assign    
+    def assign
         @match = Match.find(params[:id])
         @match.assign_ref(params[:referee_id])
     
