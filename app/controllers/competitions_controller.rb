@@ -1,5 +1,9 @@
 class CompetitionsController < ApplicationController
     
+    def new
+        
+        @season = Season.find(params[:season_id])
+    end
 
     def create
         if admin_logged_in?
