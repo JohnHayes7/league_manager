@@ -27,19 +27,29 @@ class TeamsController < ApplicationController
     end
 
     def update
-        @team = Team.find(params[:id])
-        @team.coach_id = params[:team][:coach_id]
-        @team.save
-         
-        redirect_to team_path(@team)
+        if admin_logged_in? || coach_logged_in? && current_user.id == params[:team][:coach_id]
+            @team = Team.find(params[:id])
+            @team.coach_id = params[:team][:coach_id]
+            @team.save
+            
+            redirect_to team_path(@team)
+        else
+            flash[:error] = "Only an administrator or the teams coach can edit a team"
+            redirect_to login_path
+        end
     end
 
     def destroy
-        team = Team.find(params[:id])
-        team.lose_coach
-        team.destroy
+        if admin_logged_in?
+            team = Team.find(params[:id])
+            team.lose_coach
+            team.destroy
 
-        redirect_to administrator_path(current_user.id)
+            redirect_to administrator_path(current_user.id)
+        else
+            flash[:error] = "Only an Administrator can delete a team"
+            redirect_to login_path
+        end
     end
 
     private
