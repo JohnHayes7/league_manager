@@ -3,6 +3,15 @@ class AdministratorsController < ApplicationController
     def index
         @admins = Administrator.all
     end
+
+    def new
+        if admin_logged_in?
+            @admin = Administrator.new
+        else
+            flash[:error] = "You must be an administrator to continue"
+            redirect_to login_path
+        end
+    end
     
     def create
         if admin_logged_in?
@@ -28,15 +37,6 @@ class AdministratorsController < ApplicationController
             redirect_to login_path
         end
         
-    end
-
-    def new
-        if admin_logged_in?
-            @admin = Administrator.new
-        else
-            flash[:error] = "You must be an administrator to continue"
-            redirect_to login_path
-        end
     end
 
     def edit
