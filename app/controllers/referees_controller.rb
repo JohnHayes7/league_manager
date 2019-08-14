@@ -44,6 +44,16 @@ class RefereesController < ApplicationController
         @ref.save
         redirect_to referee_path(@ref)
     end
+    
+    def destroy
+        if admin_logged_in?
+            @ref = Referee.find(params[:id])
+            @ref.reassign_future_matches
+        else
+            flash[:error] = "You Must be an Administrator to change a referee"
+            redirect_to login_path
+        end
+    end
 
 
 
