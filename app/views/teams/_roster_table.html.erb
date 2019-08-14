@@ -2,7 +2,7 @@
         <tr>
             <th> Player Name </th>
             <th> Jersey Number </th>
-            <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
+            <% if admin_logged_in? || coach_logged_in? %>
                 <th> Phone Number </th>
                 <th> Email </th>
                 <th></th>
@@ -14,7 +14,7 @@
             <tr>
                 <td><%= p.name %></td>
                 <td><%= p.jersey_number %></td>
-                <% if logged_in? && current_user.admin? || logged_in? && current_user.coach? %>
+                <% if admin_logged_in? || coach_logged_in? %>
                     <td><%= p.phone_number %></td>
                     <td><%= p.email %></td>
                     <td><%= link_to "edit", edit_team_player_path(p.team_id, p) %></td>
