@@ -10,10 +10,12 @@
 
     <h3>All Seasons</h3>
     <% @seasons.each do |s| %>
-        <%= link_to "#{s.year}", season_path(s) %><br>
+        <% if s.id != 39 %>
+            <%= link_to "#{s.year}", season_path(s) %><br>
+        <% end %>
     <% end %>
 </div>
-    <% @comp.matches.each do |m| %>
+    <% @comp.matches.order(date: :desc).each do |m| %>
         <div id="match-display">
             <%= link_to "#{m.date} #{m.time}", competition_match_path(m.competition_id, m) %>  <br>
             <%= m.teams_display %><br>

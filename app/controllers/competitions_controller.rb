@@ -27,7 +27,7 @@ class CompetitionsController < ApplicationController
 
     def show 
         @comp = Competition.find(params[:id])
-        @seasons = Season.all
+        @seasons = Season.order(year: :desc)
     end
 
     def edit

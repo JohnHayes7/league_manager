@@ -57,10 +57,6 @@ class ApplicationController < ActionController::Base
         logged_in? && current_user.referee?
     end
 
-    def homepage
-       
-    end
-
     def belongs_to_ref(match)
         match.referee_id == current_user.id
     end

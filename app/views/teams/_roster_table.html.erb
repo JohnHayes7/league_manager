@@ -9,7 +9,7 @@
             <% end %>
         </tr>
             
-        <% team.players.each do |p| %>
+        <% team.players.order(:name).each do |p| %>
             <% if p.id != nil %>
             <tr>
                 <td><%= p.name %></td>

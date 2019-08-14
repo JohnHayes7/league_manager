@@ -1,7 +1,7 @@
 class AdministratorsController < ApplicationController
 
     def index
-        @admins = Administrator.all
+        @admins = Administrator.order(:name)
     end
 
     def new
@@ -29,9 +29,9 @@ class AdministratorsController < ApplicationController
         if admin_logged_in?
             @admin = Administrator.find_by(:id => params[:id])
             @teams = Team.order(:name)
-            @coaches = Coach.all
-            @seasons = Season.order(year: desc)
-            @referees = Referee.all
+            @coaches = Coach.order(:name)
+            @seasons = Season.order(year: :desc)
+            @referees = Referee.order(:name)
         else
             flash[:error] = "You must be an administrator to continue"
             redirect_to login_path
