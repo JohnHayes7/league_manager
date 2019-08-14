@@ -7,7 +7,9 @@
 
     <h3>All Seasons</h3>
     <% @seasons.each do |s| %>
-        <%= link_to "#{s.year}", season_path(s) %><br>
+        <% if s.id != 39 %>
+            <%= link_to "#{s.year}", season_path(s) %><br>
+        <% end %>
     <% end %>
 </div>
 

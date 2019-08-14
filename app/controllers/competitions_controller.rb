@@ -7,10 +7,17 @@ class CompetitionsController < ApplicationController
     def create
         if admin_logged_in?
             @comp = Competition.new(comp_params)
-            @comp.season_id = params[:season_id]
-            if @comp.save
-                
+            binding.pry
+            if params[:season_id]
+                @comp.season_id = params[:season_id]
+                @comp.save
                 redirect_to season_path(params[:season_id])
+            else
+                # 39 is a dummy season
+                @comp.season_id = 39
+                @comp.save
+
+                redirect_to seasons_path
             end
         else
             flash[:error] = "You Need to be an administrator to create new competitions"

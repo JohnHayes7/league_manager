@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :administrators, only:[:show, :new, :create, :index, :edit, :update, :destroy]
   
   resources :competitions
+  # post '/competitions', :to => 'competitions#create'
   
   resources :seasons, only:[:new, :create, :show, :index, :destroy, :edit, :update] do 
     resources :competitions, only:[:new, :create, :edit, :update]

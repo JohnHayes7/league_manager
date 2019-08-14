@@ -1,7 +1,13 @@
 <h2>Add Or Create A New Competition</h2>
 
-<%= form_for @comp do |f| %>
-    <%= f.label "Competition Name:" %>
-    <%= f.text_field :name %><br>
-    <%= f.submit %>
+<% if @comp.errors.any? %>
+  <div id="error_explanation"> 
+    <ul>
+    <% @comp.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div><br>
 <% end %>
+
+<%= render 'form' %>
