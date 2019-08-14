@@ -15,6 +15,8 @@ class SeasonsController < ApplicationController
         @season = Season.new(season_params)
         if @season.save
             redirect_to season_path(@season)
+        else
+            render :new
         end
     end
 

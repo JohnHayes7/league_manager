@@ -1,3 +1,13 @@
+<% if @season.errors.any? %>
+  <div id="error_explanation"> 
+    <ul>
+    <% @season.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div><br>
+<% end %>
+
 <h1> Create a New Season </h1>
 <%= render partial: 'form', locals: {season: @season} %>
     
