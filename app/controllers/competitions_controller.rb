@@ -1,8 +1,7 @@
 class CompetitionsController < ApplicationController
     
     def new
-        
-        @season = Season.find(params[:season_id])
+        @comp = Competition.new
     end
 
     def create

@@ -1,9 +1,7 @@
 <h2>Add Or Create A New Competition</h2>
 
-<%= form_for(@season, :url => {:action => "update"}) do |f| %>
-    <%= f.fields_for :competition do |comp| %>
-        <%= comp.label "Competition Name:" %>
-        <%= comp.text_field :name %><br>
-        <%= f.submit %>
-    <% end %>
+<%= form_for @comp do |f| %>
+    <%= f.label "Competition Name:" %>
+    <%= f.text_field :name %><br>
+    <%= f.submit %>
 <% end %>

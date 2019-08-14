@@ -5,7 +5,7 @@
             <%= f.submit %>
         <% end %>
         <br><br>
-        <%= link_to "Create and add a new competition to this season", new_season_competition_path(season) %>
+        <%= link_to "Create and add a new competition to this season", new_competition_path %>
         <br><br>
         <%= form_for season, method: :delete do |f| %>
             <%= f.submit "Delete Season" %>
