@@ -48,12 +48,8 @@ class Match < ApplicationRecord
         self.where(("referee_id = 1"))
     end
 
-    def belongs_to_ref
-        self.referee.matches.include?(referee)
-    end
-
     def notes_exist?
-        !self.referee.match_notes.empty?
+        !self.referee.match_notes == nil
     end
 
     def result
@@ -81,4 +77,5 @@ class Match < ApplicationRecord
         self.save
     end
     
+   
 end

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     helper_method :ref_logged_in?
     helper_method :coach_logged_in?
     helper_method :admin_logged_in?
-    helper_method :homepage
+    helper_method :belongs_to_ref
 
     def current_user
         if session[:admin_id]
@@ -61,8 +61,8 @@ class ApplicationController < ActionController::Base
        
     end
 
-    def belongs_to_ref
-        self.referee.matches.include?(current_user)
+    def belongs_to_ref(match)
+        match.referee_id == current_user.id
     end
 
 
