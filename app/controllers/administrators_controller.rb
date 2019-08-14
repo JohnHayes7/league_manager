@@ -28,9 +28,9 @@ class AdministratorsController < ApplicationController
     def show
         if admin_logged_in?
             @admin = Administrator.find_by(:id => params[:id])
-            @teams = Team.all
+            @teams = Team.order(:name)
             @coaches = Coach.all
-            @seasons = Season.all
+            @seasons = Season.order(year: desc)
             @referees = Referee.all
         else
             flash[:error] = "You must be an administrator to continue"

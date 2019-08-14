@@ -22,7 +22,7 @@ class SeasonsController < ApplicationController
 
     def show
         @season = Season.find_by(:id => params[:id])
-        @seasons = Season.all
+        @seasons = Season.order(year: :desc)
     end
 
     def edit
@@ -35,7 +35,7 @@ class SeasonsController < ApplicationController
     end
 
     def index
-        @seasons = Season.all
+        @seasons = Season.order(year: :desc)
     end
 
     def update
