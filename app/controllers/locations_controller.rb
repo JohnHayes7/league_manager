@@ -1,15 +1,25 @@
 class LocationsController < ApplicationController 
 
     def new
-        @location = Location.new 
+        if admin_logged_in?
+            @location = Location.new 
+        else
+            flash[:error] = "You Must be an Administrator to add or create locations"
+            redirect_to login_path
+        end
     end
 
     def create
-        @location = Location.new(location_params)
-        if @location.save
-            redirect_to @locations_path
+        if admin_logged_in?
+            @location = Location.new(location_params)
+            if @location.save
+                redirect_to @locations_path
+            else
+                render :new
+            end
         else
-            render :new
+            flash[:error] = "You Must be an Administrator to add or create locations"
+            redirect_to login_path
         end
     end
 

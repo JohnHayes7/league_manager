@@ -1,9 +1,15 @@
 class MatchNotesController < ApplicationController
 
     def new
-        @note = MatchNote.new
-        @ref = Referee.find(params[:referee_id])
         @match = Match.find(params[:match_id])
+        if ref_logged_in && belongs_to_ref(@match)
+            @note = MatchNote.new
+            @ref = Referee.find(params[:referee_id])
+        else
+            flash[:error] = "Only the Referee who officiated this game can add match notes"
+            redirect_to login_path
+        end
+        
     end
 
     def create

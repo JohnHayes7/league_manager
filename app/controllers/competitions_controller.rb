@@ -2,10 +2,15 @@ class CompetitionsController < ApplicationController
     
 
     def create
-        @comp = Competition.new(comp_params)
-        @comp.season_id = params[:season_id]
-        if @comp.save
-            
+        if admin_logged_in?
+            @comp = Competition.new(comp_params)
+            @comp.season_id = params[:season_id]
+            if @comp.save
+                
+                redirect_to season_path(params[:season_id])
+            end
+        else
+            flash[:error] = "You Need to be an administrator to create new competitions"
             redirect_to season_path(params[:season_id])
         end
     end
@@ -15,23 +20,27 @@ class CompetitionsController < ApplicationController
         @seasons = Season.all
     end
 
-    def new
-        @season = Season.find(params[:season_id])
-        @comp = Competition.new
-        @comp.matches.build
-    end
-
     def edit
-        @comp = Competition.find(params[:id])
+        if admin_logged_in?
+            @comp = Competition.find(params[:id])
+        else
+            flash[:error] = "You Need to be an administrator to edit a competition"
+            redirect_to competition_path(params[:id])
+        end
     end
 
    def update
-        @comp = Competition.find(params[:id])
-        @comp.update(comp_params)
-        if @comp.save
-            redirect_to competition_path(@comp)
+        if admin_logged_in?
+            @comp = Competition.find(params[:id])
+            @comp.update(comp_params)
+            if @comp.save
+                redirect_to competition_path(@comp)
+            else
+                render :edit
+            end
         else
-            render :edit
+            flash[:error] = "You Must be an Administrator to edit a competition"
+            redirect_to competition_path(params[:id])
         end
    end
 

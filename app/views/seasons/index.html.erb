@@ -5,12 +5,14 @@
     <% end %>
 </ul>
 <br><br>
-<%= link_to "Create A New Season", new_season_path %>
+<% if admin_logged_in? %>
+    <%= link_to "Create A New Season", new_season_path %>
+<% end %>
 <br><br>
-<% if logged_in? && current_user.admin? %>
+<% if admin_logged_in? %>
     <%= link_to "Back to HomePage", administrator_path(current_user.id) %>
-<% elsif logged_in? && current_user.referee? %>
+<% elsif ref_logged_in? %>
     <%= link_to "Back to Homepage", referee_path(current_user.id) %>
-<% elsif logged_in? && current_user.coach? %>
+<% elsif coach_logged_in? %>
     <%= link_to "Back to Homepage", coach_path(current_user.id) %>
 <% end %>
