@@ -12,12 +12,22 @@ class PlayersController < ApplicationController
     end
 
     def new
-        @player = Player.new
+        if admin_logged_in?
+            @player = Player.new
+        else
+            flash[:error] = "You Must Be Logged In As An Administrator to add or create a player"
+            redirect_to login_path
+        end
     end
 
     def edit
-        @player = Player.find(params[:id])
-    end
+        if admin_logged_in
+            @player = Player.find(params[:id])
+        else
+            flash[:error] = "You Must Be Logged In As An Administrator to add or create a player"
+            redirect_to login_path
+        end
+    end 
 
     def update
         @player = Player.find(params[:id])
