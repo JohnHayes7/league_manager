@@ -61,5 +61,8 @@ class ApplicationController < ActionController::Base
         match.referee_id == current_user.id
     end
 
+    def logged_in_and_belongs_to_coach(coach)
+        coach_logged_in? && current_user.id == coach.id
+    end
 
 end

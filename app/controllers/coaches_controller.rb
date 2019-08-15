@@ -25,6 +25,7 @@ class CoachesController < ApplicationController
         if coach_logged_in? || admin_logged_in?
             @coach = Coach.find(params[:id])
             @unassigned_teams = Team.where("coach_id == 5")
+            @coaches = Coach.order(name: :asc)
         else
             flash[:error] = "You Must be logged in to continue"
             redirect_to login_path 
@@ -33,8 +34,9 @@ class CoachesController < ApplicationController
     end
 
     def edit
-        if coach_logged_in? && current_user.id == @coach.id || admin_logged_in?
-            @coach = Coach.find(params[:id])
+        @coach = Coach.find(params[:id])
+        if logged_in_and_belongs_to_coach(@coach) || admin_logged_in? 
+            render :edit
         else
             flash[:error] = "Coaches can only edit their own infomation.  Or you must be logged in as an administrator"
             redirect_to coach_path(@coach)

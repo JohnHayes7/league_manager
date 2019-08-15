@@ -12,8 +12,7 @@
   <body>
   
   <header>
-    <div class="header">
-      League Manager
+      <h3>League Manager</h3>
         <% if logged_in? %>
           <% if admin_logged_in? %>
             <%= link_to "Homepage", administrator_path(current_user.id) %>
@@ -24,8 +23,8 @@
           <% end %>
         <%= link_to "Log Out", logout_path, method: "delete" %></header>
         <% end %>
-    </div>
   </header>
+  
   <% flash.each do |key, value| %>
     <div id="error_explanation">
       <div class="alert alert-<%= key %>"><%= value %></div>

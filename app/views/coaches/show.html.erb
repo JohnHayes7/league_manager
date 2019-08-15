@@ -7,18 +7,28 @@
 <% end %>
 
 <div class="col-2-wide">
-<h3>Teams without Coaches:</h3>
-    <% @unassigned_teams.each do |t| %>
-        <%= link_to "#{t.name}", team_path(t) %><br>
-    <% end %>
+    <h3>Teams without Coaches:</h3>
+    <ul>
+        <% @unassigned_teams.each do |t| %>
+            <li><%= link_to "#{t.name}", team_path(t) %></li>
+        <% end %><br>
+    </ul>
+    <h3>All Coaches: </h3>
+        <ul>
+            <% @coaches.each do |c| %>
+                <% if c.id != 5 %>
+                    <li> <%= link_to c.name, coach_path(c) %> - <%= c.email %> - <%= c.phone_number %></li>
+                <% end %>
+            <% end %>
+        </ul>
+
 </div>
 
 <div class="col-1-narrow">
    
-        <strong>Coach <%= @coach.last_name %> Contact info</strong>
-        
-        <% if current_user.admin? || current_user.coach? && current_user.id == @coach.id %>
+        <strong>Coach <%= @coach.last_name %> Contact info:</strong><br>
             <%= render partial: "coach", locals: {coach: @coach} %>
+        <% if current_user.admin? || current_user.coach? && current_user.id == @coach.id %>
             <%= link_to "Edit", edit_coach_path(@coach) %><br>
         <% end %>
 

@@ -22,6 +22,19 @@ body{
     width: 100%;
 }
 
+/* header{
+    background-color: rgb(110, 110, 120);
+    position: relative;
+    top: -20px;
+    width: 100%;
+    height: 5%;
+    color: white;
+} */
+
+header h2{
+    padding: 5%;
+}
+
  #welcome{
      text-align: center;
      position: relative;
@@ -62,6 +75,14 @@ body{
     top: 8%;
     width: 50%
      
+ }
+
+ #location-show-info{
+     width: 40%;
+     border: 1px solid black;
+     font-size: 125%;
+     padding-left: 2%;
+     text-align: left;
  }
 
  table, th, td {

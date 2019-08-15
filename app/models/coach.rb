@@ -29,4 +29,5 @@ class Coach < ApplicationRecord
     end
 
 
+
 end
