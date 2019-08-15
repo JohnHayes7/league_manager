@@ -30,7 +30,7 @@
 <% end %>
 
 
-<% if admin_logged_in? || coach_logged_in? %>
+<% if admin_logged_in? || coach_logged_in? && current_user.id == @team.coach.id %>
     <h3> Add a New player </h3>
     <%= form_for(@player, url: team_players_path(@player.team_id, @player)) do |f| %>
         <%= f.label :name %>
