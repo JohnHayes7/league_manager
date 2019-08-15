@@ -19,9 +19,11 @@ class MatchesController < ApplicationController
                 if @match.save
                         redirect_to competition_path(@match.competition_id)
                 else
-                        flash[:error] = "Match could not be saved. Please try again."
+                        @match.errors.each do |e|
+                            e
+                        end
                         render :new
-                end
+                end 
         else
             flash[:error] = "Be sure two teams are selected to create a match"
             render :new

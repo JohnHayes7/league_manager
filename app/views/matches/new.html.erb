@@ -1,8 +1,6 @@
 <h1>Create A New Match </h1>
-<% if flash[:error] %>
-    <h2><%= flash[:error] %></h2>
-<% end %>
 
+<strong>Competition: <%= @match.competition.name %></strong>
 <%= form_for @match, url: {action: 'create'}  do |f| %>
     <%= f.label "Match Date:" %>
     <%= f.date_field :date%><br>            
