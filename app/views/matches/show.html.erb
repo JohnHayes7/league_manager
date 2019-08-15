@@ -6,14 +6,14 @@
     <% end %>    
 
     <div id="ref-info">
-        
-        <% if !@match.notes_exist? %>
-            <strong>The Referee will add match notes. <br> Please contact league administrator if you have any questions</strong>
+        <% if @match.notes.nil? %>
+            <strong>The Referee will add match notes. <br> Please contact league administrator if you have any questions</strong><br>
             <% if ref_logged_in? && belongs_to_ref(@match) %>
                 <%= link_to "Add Match Notes", new_referee_match_match_note_path(@match.referee.id, @match) %><br> 
             <% end %>    
         <% else %>
-            <% @match.referee.match_notes.each do |note| %>
+            <% @match.notes.each do |note| %>
+                
                 <h4><%= @match.result %>
                 <h4>Referee: <%= @match.referee.name %><br></h4>
                 <strong>Match Notes: </strong>

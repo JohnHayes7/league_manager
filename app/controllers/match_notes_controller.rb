@@ -2,7 +2,7 @@ class MatchNotesController < ApplicationController
 
     def new
         @match = Match.find(params[:match_id])
-        if ref_logged_in && belongs_to_ref(@match)
+        if ref_logged_in? && belongs_to_ref(@match)
             @note = MatchNote.new
             @ref = Referee.find(params[:referee_id])
         else
@@ -14,12 +14,11 @@ class MatchNotesController < ApplicationController
 
     def create
         match = Match.find(params[:match_note][:match_id])
-        if ref_logged_in && belongs_to_ref(match)
+        if ref_logged_in? && belongs_to_ref(match)
             note = MatchNote.new(match_note_params)
             note.referee_id = params[:referee_id]
-            
+            note.match_id = match.id
             match.goals_update(params)
-            
             if note.save
 
                 redirect_to competition_match_path(match.competition_id, match)
@@ -47,8 +46,9 @@ class MatchNotesController < ApplicationController
         if ref_logged_in? && belongs_to_ref(@match)
             @note = MatchNote.find(params[:id])
             @match.goals_update(params)
-        
+            @note.match_id = @match.id
             @note.update(match_note_params)
+            
             @note.save
 
             redirect_to competition_match_path(@match.competition_id, @match)

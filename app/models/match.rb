@@ -48,8 +48,8 @@ class Match < ApplicationRecord
         self.where(("referee_id = 1"))
     end
 
-    def notes_exist?
-        !self.referee.match_notes == nil
+    def notes
+        MatchNote.where("match_id = #{self.id}")
     end
 
     def result
