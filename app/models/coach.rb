@@ -28,6 +28,18 @@ class Coach < ApplicationRecord
         end
     end
 
+    def teams_display
+        if self.teams.empty?
+            "You Currently Don't Have Any Teams"
+            "Please contact league administrator to have teams assigned"
+        else
+            "Coach #{self.last_name}, Coaches These Teams" 
+                self.teams.each do |t|
+                link_to t.name, team_path(t) 
+            end
+        end
+    end
+
 
 
 end

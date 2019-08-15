@@ -36,10 +36,10 @@
         <strong>You Currently Don't Have Any Teams</strong><br>
         <strong>Please contact league administrator to have teams assigned</strong>
     <% else %>
-        <strong>Coach <%= @coach.last_name %>, Coaches These Teams </strong %><br>
+        <strong>Coach <%= @coach.last_name %> Teams </strong %>
         <ul>
             <% @coach.teams.each do |t| %>
-                <li><%= link_to "#{t.name}", team_path(t) %><br></li>
+                <li><%= link_to "#{t.name}", team_path(t) %></li>
             <% end %>
         </ul>
     <% end %>
