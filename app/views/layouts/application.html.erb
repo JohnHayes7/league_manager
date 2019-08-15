@@ -12,17 +12,19 @@
   <body>
   
   <header>
-  <h1>League Manager</h1>
-    <% if logged_in? %>
-      <% if admin_logged_in? %>
-        <%= link_to "Homepage", administrator_path(current_user.id) %>
-      <% elsif ref_logged_in? %>
-        <%= link_to "Homepage", referee_path(current_user.id) %>
-      <% elsif coach_logged_in? %>
-        <%= link_to "Homepage", coach_path(current_user.id) %>
-      <% end %>
-    <%= link_to "Log Out", logout_path, method: "delete" %></header>
-    <% end %>
+    <div class="header">
+      League Manager
+        <% if logged_in? %>
+          <% if admin_logged_in? %>
+            <%= link_to "Homepage", administrator_path(current_user.id) %>
+          <% elsif ref_logged_in? %>
+            <%= link_to "Homepage", referee_path(current_user.id) %>
+          <% elsif coach_logged_in? %>
+            <%= link_to "Homepage", coach_path(current_user.id) %>
+          <% end %>
+        <%= link_to "Log Out", logout_path, method: "delete" %></header>
+        <% end %>
+    </div>
   </header>
   <% flash.each do |key, value| %>
     <div id="error_explanation">
