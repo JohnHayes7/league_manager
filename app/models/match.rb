@@ -72,9 +72,11 @@ class Match < ApplicationRecord
     end
 
     def goals_update(params)
-        self.matchgoals_1 = params[:match_note][:team_1_goals]
-        self.matchgoals_2 = params[:match_note][:team_2_goals]
-        self.save
+        if !params[:match_note][:team_1_goals].empty? && !params[:match_note][:team_2_goals].empty?
+            self.matchgoals_1 = params[:match_note][:team_1_goals]
+            self.matchgoals_2 = params[:match_note][:team_2_goals]
+            self.save
+        end
     end
     
    
