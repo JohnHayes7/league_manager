@@ -12,6 +12,7 @@
   <body>
   
   <header>
+  <h1>League Manager</h1>
     <% if logged_in? %>
       <% if admin_logged_in? %>
         <%= link_to "Homepage", administrator_path(current_user.id) %>

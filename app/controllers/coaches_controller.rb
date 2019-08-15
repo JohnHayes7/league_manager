@@ -33,7 +33,7 @@ class CoachesController < ApplicationController
     end
 
     def edit
-        if coach_logged_in?? && current_user.id == @coach.id || admin_logged_in?
+        if coach_logged_in? && current_user.id == @coach.id || admin_logged_in?
             @coach = Coach.find(params[:id])
         else
             flash[:error] = "Coaches can only edit their own infomation.  Or you must be logged in as an administrator"

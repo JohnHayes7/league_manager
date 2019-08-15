@@ -21,6 +21,14 @@ body{
     font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 
+header{
+    /* background-color:rgba(248, 248, 248, 0.5); */
+    background-color: rgb(163, 181, 190);
+    top: 0px;
+    height: 5%;
+    width: 100%;
+}
+
  #welcome{
      text-align: center;
      position: relative;
