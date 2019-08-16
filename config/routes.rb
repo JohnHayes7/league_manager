@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :coaches 
 
-  get '/standings', to: 'teams#standings'
+  get '/standings', to: 'competitions#standings'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
