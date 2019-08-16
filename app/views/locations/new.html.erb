@@ -10,6 +10,7 @@
   </div><br>
 <% end %>
 
-<%= form_for(location) do |f| %>
-    <%= render partial: "fields", locals: {f: f} %>
+<%= form_for(@location) do |f| %>
+    <%= render partial: "fields", locals: {f: f} %><br>
+    <%= f.submit %>
 <% end %>

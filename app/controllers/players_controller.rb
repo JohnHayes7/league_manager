@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
     end
 
     def new
-        if admin_logged_in?
+        if admin_logged_in? || logged_in_and_belongs_to(@player.team.coach.id)
             @player = Player.new
         else
             flash[:error] = "You Must Be Logged In As An Administrator to add or create a player"
@@ -21,7 +21,7 @@ class PlayersController < ApplicationController
     end
 
     def edit
-        if admin_logged_in
+        if admin_logged_in?
             @player = Player.find(params[:id])
         else
             flash[:error] = "You Must Be Logged In As An Administrator to add or create a player"

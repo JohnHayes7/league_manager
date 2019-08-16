@@ -13,7 +13,7 @@ class LocationsController < ApplicationController
         if admin_logged_in?
             @location = Location.new(location_params)
             if @location.save
-                redirect_to @locations_path
+                redirect_to location_path(@location)
             else
                 render :new
             end
