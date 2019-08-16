@@ -1,4 +1,5 @@
 <h1><%= @team.name %></h1>
+
 <div id="coach-info">
     <% if @team.coach_id != 5 %>
         <div id="coach-contact-box">
@@ -11,6 +12,7 @@
         <strong>Coach: <%= @team.coach.name %></strong>
     <% end %>
 </div>
+
 <% if logged_in? && current_user.admin? %>
     <%= render partial: "coach_assignment", locals: {team: @team} %>
 <% end %>  
@@ -33,15 +35,7 @@
 <% if admin_logged_in? || coach_logged_in? && current_user.id == @team.coach.id %>
     <h3> Add a New player </h3>
     <%= form_for(@player, url: team_players_path(@player.team_id, @player)) do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <%= f.label :jersey_number %>
-        <%= f.text_field :jersey_number %><br>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-        <%= f.label :phone_number %>
-        <%= f.text_field :phone_number %><br>
-        <%= f.submit %>
+        <%= render partial: 'player_form', locals:{f:f} %>
     <% end %>
 <% end %>
 
