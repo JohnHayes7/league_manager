@@ -16,6 +16,7 @@ class MatchesController < ApplicationController
         @match = Match.new(match_params)
         @match.competition_id = params[:competition_id]
         if @match.teams_count_valid?(params[:match][:team_ids].count)
+        binding.pry
                 if @match.save
                         redirect_to competition_path(@match.competition_id)
                 else
@@ -81,7 +82,7 @@ class MatchesController < ApplicationController
     private
 
     def match_params
-        params.require(:match).permit(:date, :time, :location_id,  :referee_id, :location_notes, team_ids:[], location:[:name, :street_address, :city, :state, :zipcode])
+        params.require(:match).permit(:date, :time, :location_id,  :referee_id, :location_notes, team_ids:[], location:[:name, :street_address, :city, :state, :zip_code])
     end
 
 end

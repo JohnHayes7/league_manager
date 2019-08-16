@@ -14,6 +14,7 @@ class Match < ApplicationRecord
             binding.pry
             self.location_id = l.id
             self.save
+            
         end
     end
 
