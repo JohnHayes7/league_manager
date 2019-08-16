@@ -16,7 +16,6 @@ class MatchesController < ApplicationController
         @match = Match.new(match_params)
         @match.competition_id = params[:competition_id]
         if @match.teams_count_valid?(params[:match][:team_ids].count)
-        binding.pry
                 if @match.save
                         redirect_to competition_path(@match.competition_id)
                 else
