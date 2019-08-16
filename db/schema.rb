@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_215111) do
   end
 
   create_table "seasons", force: :cascade do |t|
-    t.string "year"
+      t.string "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
