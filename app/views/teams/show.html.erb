@@ -19,7 +19,7 @@
 
 <div id="record-display">
     <h3>Competition Record: <%= @team.record %></h3>
-    <h3>Competition Stats: <%= @team.stats %></h3>
+    <h3><%= link_to "Standings", standings_path %></h3>
 </div>
 
 <%= render partial: "schedule", locals: {team: @team} %>

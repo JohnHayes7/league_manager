@@ -52,6 +52,12 @@ class TeamsController < ApplicationController
         end
     end
 
+    def standings
+        binding.pry
+        @teams = Team.order(:wins)
+        
+    end
+
     private
     
     def team_params

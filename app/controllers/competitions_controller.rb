@@ -54,6 +54,10 @@ class CompetitionsController < ApplicationController
         end
    end
 
+    def standings
+        @teams = Team.order(:wins)
+    end
+
     private
 
     def comp_params
