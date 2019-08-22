@@ -58,9 +58,7 @@ class CompetitionsController < ApplicationController
     end
 
     def active
-        @comps = Competition.joins(:matches).select("competitions.*, count(matches.id) as cmatch").group("competitions.id").order("cmatch DESC")
-       
-    
+        @comps = Competition.most_active
     end
 
     private

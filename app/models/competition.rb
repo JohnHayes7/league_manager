@@ -8,4 +8,8 @@ class Competition < ApplicationRecord
     def full_name
         "#{self.season.year} - #{self.name}"
     end
+
+    def self.most_active
+        self.joins(:matches).select("competitions.*, count(matches.id) as cmatch").group("competitions.id").order("cmatch DESC")
+    end
 end
