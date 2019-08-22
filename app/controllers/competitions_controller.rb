@@ -7,7 +7,6 @@ class CompetitionsController < ApplicationController
     def create
         if admin_logged_in?
             @comp = Competition.new(comp_params)
-            binding.pry
             if params[:season_id]
                 @comp.season_id = params[:season_id]
                 @comp.save
@@ -56,6 +55,10 @@ class CompetitionsController < ApplicationController
 
     def standings
         @teams = Team.order(:wins)
+    end
+
+    def active
+        @comp = Competition.joins(:matches).select("competitions.*, count(matches.id) as cmatch").group("competitions.id").order("cmatch DESC")
     end
 
     private

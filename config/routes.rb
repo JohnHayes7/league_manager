@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   resources :coaches 
 
+  get '/most_active', to: 'competitions#active'
+
   get '/standings', to: 'competitions#standings'
 
   get '/login', to: 'sessions#new'
