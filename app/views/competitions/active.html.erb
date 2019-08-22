@@ -1,2 +1,16 @@
 <h1>The Competition with the most matches is:</h1>
 <h2>The <%= @comps[0].name %> with <%= @comps[0].matches.count %> matches</h2>
+
+<table>
+        <tr>
+            <th> Competition Name </th>
+            <th> No. of Matches </th>
+        </tr>
+            
+        <% @comps.each do |c| %>
+            <tr>
+                <td><%= c.name %></td>
+                <td><%= c.matches.count %></td>
+            </tr>
+        <% end %>
+</table>
