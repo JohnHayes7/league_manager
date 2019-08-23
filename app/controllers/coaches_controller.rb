@@ -1,23 +1,15 @@
 class CoachesController < ApplicationController
-
+    before_action :admin_login, except: [:edit, :show, :update]
     def new
-        if admin_logged_in?
-            @coach = Coach.new
-        else
-            flash[:error] = "You must be an administrator to create a new coach account"
-            redirect_to login_path
-        end
+        @coach = Coach.new
     end
 
     def create
-        if admin_logged_in?
-            @coach = Coach.new(coach_params)
-            if @coach.save
-
-                redirect_to coach_path(@coach)
-            else
-                render :new
-            end
+        @coach = Coach.new(coach_params)
+        if @coach.save
+            redirect_to coach_path(@coach)
+        else
+            render :new
         end
     end
 
@@ -56,16 +48,9 @@ class CoachesController < ApplicationController
 
     def destroy
         @coach = Coach.find(params[:id])
-        if admin_logged_in?
-            @coach.reassign_coach_teams
-            
-            @coach.destroy
-
-            redirect_to administrator_path(current_user.id)
-        else
-            flash[:error] = "Only Administrators can delete accounts"
-            redirect_to coach_path(@coach)
-        end
+        @coach.reassign_coach_teams    
+        @coach.destroy
+        redirect_to administrator_path(current_user.id)
     end
 
 
@@ -73,6 +58,13 @@ class CoachesController < ApplicationController
 
     def coach_params
         params.require(:coach).permit(:name, :email, :phone_number, :password)
+    end
+
+    def admin_login
+        unless admin_logged_in?
+            flash[:error] = "You must be an administrator to continue"
+            redirect_to login_path
+        end
     end
 
 end
