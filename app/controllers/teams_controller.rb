@@ -1,11 +1,9 @@
 class TeamsController < ApplicationController
+
+    before_action :admin_login, except: [:show, :index, :update]
+    
     def new
-        if admin_logged_in?
-            @team = Team.new
-        else
-            flash[:error] = "You must be logged in to create a new team"
-            redirect_to login_path
-        end
+        @team = Team.new
     end
 
     def create
@@ -40,16 +38,11 @@ class TeamsController < ApplicationController
     end
 
     def destroy
-        if admin_logged_in?
-            team = Team.find(params[:id])
-            team.lose_coach
-            team.destroy
+        team = Team.find(params[:id])
+        team.lose_coach
+        team.destroy
 
-            redirect_to administrator_path(current_user.id)
-        else
-            flash[:error] = "Only an Administrator can delete a team"
-            redirect_to login_path
-        end
+        redirect_to administrator_path(current_user.id)
     end
 
 
@@ -57,5 +50,12 @@ class TeamsController < ApplicationController
     
     def team_params
         params.require(:team).permit(:name, :coach_id)
+    end
+
+    def admin_login
+        unless admin_logged_in?
+            flash[:error] = "You must be an administrator to continue"
+            redirect_to login_path
+        end
     end
 end
