@@ -1,17 +1,13 @@
 class SeasonsController < ApplicationController
+
+    before_action :admin_login, except: [:show, :index]
     
     def new
-        if admin_logged_in?
-            @season = Season.new
-            @season.competitions.build
-        else
-            flash[:error] = "Only Administrators can create a new season"
-            redirect_to login_path
-        end
+        @season = Season.new
+        @season.competitions.build
     end
 
     def create
-        
         @season = Season.new(season_params)
         if @season.save
             redirect_to season_path(@season)
@@ -26,12 +22,7 @@ class SeasonsController < ApplicationController
     end
 
     def edit
-        if admin_logged_in?
-            @season = Season.find(params[:id])
-        else
-            flash[:error] = "You Must be an Administrator to edit a season"
-            redirect_to login_path
-        end
+        @season = Season.find(params[:id])
     end
 
     def index
@@ -49,16 +40,21 @@ class SeasonsController < ApplicationController
     end
 
     def destroy
-        if admin_logged_in?
-            Season.destroy(params[:id])
+        Season.destroy(params[:id])
 
-            redirect_to seasons_path
-        end
+        redirect_to seasons_path
     end
 
     private
 
     def season_params
         params.require(:season).permit(:year, competition_ids:[], competitions_attributes:[:name])
+    end
+
+    def admin_login
+        unless admin_logged_in?
+            flash[:error] = "You must be an administrator to continue"
+            redirect_to login_path
+        end
     end
 end
