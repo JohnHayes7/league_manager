@@ -1,25 +1,17 @@
 class LocationsController < ApplicationController 
 
+    before_action :admin_login, except: [:show, :index]
+
     def new
-        if admin_logged_in?
-            @location = Location.new 
-        else
-            flash[:error] = "You Must be an Administrator to add or create locations"
-            redirect_to login_path
-        end
+        @location = Location.new 
     end
 
     def create
-        if admin_logged_in?
-            @location = Location.new(location_params)
-            if @location.save
-                redirect_to location_path(@location)
-            else
-                render :new
-            end
+        @location = Location.new(location_params)
+        if @location.save
+            redirect_to location_path(@location)
         else
-            flash[:error] = "You Must be an Administrator to add or create locations"
-            redirect_to login_path
+            render :new
         end
     end
 
@@ -36,4 +28,13 @@ class LocationsController < ApplicationController
     def location_params
         params.require(:location).permit(:name, :street_address, :city, :state, :zip_code)
     end
+
+    def admin_login
+        unless admin_logged_in?
+            flash[:error] = "You must be an administrator to continue"
+            redirect_to login_path
+        end
+    end
+
+    
 end
