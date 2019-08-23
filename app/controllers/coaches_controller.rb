@@ -1,5 +1,6 @@
 class CoachesController < ApplicationController
     before_action :admin_login, except: [:edit, :show, :update]
+    
     def new
         @coach = Coach.new
     end
@@ -21,7 +22,6 @@ class CoachesController < ApplicationController
         else
             flash[:error] = "You Must be logged in to continue"
             redirect_to login_path 
-            
         end  
     end
 
