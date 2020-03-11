@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_08_13_215111) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "administrators", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -112,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_215111) do
   end
 
   create_table "seasons", force: :cascade do |t|
-      t.string "year"
+    t.string "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -122,7 +125,6 @@ ActiveRecord::Schema.define(version: 2019_08_13_215111) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "coach_id"
-    t.integer "losses", default: 0
     t.integer "goals_for", default: 0
     t.integer "goals_against", default: 0
   end
