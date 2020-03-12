@@ -40,6 +40,8 @@ gem 'omniauth-google-oauth2'
 
 gem 'rack-flash3'
 
+gem "figaro"
+
 # gem "nokogiri", ">= 1.10.8"
 
 # Use ActiveStorage variant
