@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     end
 
     def create
+        binding.pry
        @user = find_user_type(params)
        if @user && @user.authenticate(params[:session][:password])
             define_and_route(@user)
