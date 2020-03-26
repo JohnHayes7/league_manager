@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
     end
 
     def find_user_type(params)
+        puts
         Administrator.find_by(email: params[:session][:email]) || @user = Referee.find_by(email: params[:session][:email]) || @user = Coach.find_by(email: params[:session][:email])
     end
 
